@@ -533,7 +533,13 @@
     </main>
     
     <footer class="text-center py-8 border-t border-slate-800">
-        <p class="text-slate-500">&copy; 2025 Peniel Ben. All Rights Reserved.</p>
+        <p class="text-slate-500">
+  &copy; <span id="year"></span> Peniel Ben. All Rights Reserved.
+</p>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
     </footer>
 </body>
 </html>
