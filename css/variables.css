@@ -1,0 +1,25 @@
+:root {
+  --color-bg: #050505;
+  --color-surface: #0c0c0e;
+  --color-elevated: #141418;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
+
+  --color-text: #ededed;
+  --color-text-2: #999999;
+  --color-text-3: #555555;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 0.25s var(--ease);
+  --t-med: 0.5s var(--ease);
+  --t-slow: 0.8s var(--ease);
+}

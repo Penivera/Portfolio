@@ -1,0 +1,6 @@
+/* Progressive enhancement: visible by default without JS */
+.no-js .reveal-text, .no-js .reveal-item { opacity: 1; transform: none; }
+
+/* JS enabled: hide for GSAP to reveal */
+.js .reveal-text { opacity: 0; transform: translateY(15px); }
+.js .reveal-item { opacity: 0; transform: translateY(20px); }
