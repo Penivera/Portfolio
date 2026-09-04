@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Resume of Peniel Ben, backend and systems engineer.">
+<title>Peniel Ben | Backend and Systems Engineer</title>
+<style>
+* { box-sizing: border-box; }
+@page { size: letter; margin: 0.5in 0.58in; }
+body { max-width: 850px; margin: 0 auto; padding: 40px 32px; color: #171717; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.42; }
+h1, h2, h3, p, ul { margin-top: 0; }
+h1 { margin-bottom: 4px; font-size: 28px; line-height: 1.15; }
+h2 { margin: 22px 0 9px; padding-bottom: 3px; border-bottom: 1px solid #999; font-size: 15px; line-height: 1.2; letter-spacing: 0.6px; text-transform: uppercase; }
+h3 { margin: 13px 0 2px; font-size: 14px; line-height: 1.25; break-after: avoid; }
+p { margin-bottom: 6px; }
+a { color: #174f91; text-decoration: none; }
+ul { margin-bottom: 7px; padding-left: 20px; }
+li { margin-bottom: 3px; }
+.contact-info { margin-bottom: 0; color: #333; font-size: 13px; }
+.separator { margin: 0 5px; color: #777; }
+.role { margin-bottom: 4px; color: #333; font-style: italic; }
+.technologies, .link { margin-bottom: 4px; color: #333; font-size: 13px; }
+.projects-list, .skills-list, .leadership-list { margin-bottom: 0; }
+.projects-list li { margin-bottom: 5px; }
+.education-item { break-inside: avoid; }
+@media print {
+    body { max-width: none; padding: 0; font-size: 11.5px; line-height: 1.3; }
+    h1 { font-size: 22px; }
+    h2 { margin: 13px 0 6px; font-size: 12px; }
+    h3 { margin-top: 8px; font-size: 11.5px; }
+    li { margin-bottom: 2px; }
+    .contact-info, .technologies, .link { font-size: 10.5px; }
+    a { color: #171717; }
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Peniel Ben</h1>
+<p class="contact-info"><a href="mailto:hello@peni.dev">hello@peni.dev</a><span class="separator">|</span><a href="https://peni.dev">peni.dev</a><span class="separator">|</span><a href="https://github.com/Penivera">github.com/Penivera</a><span class="separator">|</span><a href="https://linkedin.com/in/peniel-ben">linkedin.com/in/peniel-ben</a><span class="separator">|</span><a href="https://x.com/Penivera001">x.com/Penivera001</a></p>
+</header>
+<main>
+<section>
+<h2>Professional Summary</h2>
+<p>Backend and systems engineer experienced in government data infrastructure, high-performance trading systems, blockchain applications, and secure developer tooling. Proficient in Rust, Python, Java, and TypeScript, with backend experience across Actix Web, Axum, FastAPI, Django, and Spring Boot.</p>
+</section>
+<section>
+<h2>Professional Experience</h2>
+<article>
+<h3>Akwa Ibom State Internal Revenue Service (AKIRS), Akwa Ibom, Nigeria</h3>
+<p class="role">Systems Developer, Contract</p>
+<ul>
+<li>Engineered the AKIRS Revenue Data Integrity Platform, a FastAPI application that converts inconsistent bank and taxpayer Excel and CSV files into standardized records using heuristic schema mapping, branch filtering, and TIN, BVN, NUBAN, and contact-data validation.</li>
+<li>Implemented configurable deduplication workflows with merge, discard, and manual-review options, enabling revenue officers to resolve identity conflicts and export analysis-ready datasets.</li>
+<li>Architected the AKIRS Revenue Intelligence Platform to discover taxable businesses across all 31 local government areas and enrich records through websites, search, social profiles, geocoding, corporate registries, and commercial data providers.</li>
+<li>Delivered authenticated administration, tax classification, background jobs, database migrations, live job updates, and a local retrieval-augmented generation assistant for querying revenue and tax knowledge.</li>
+<li>Managed Linux application environments, deployment configuration, databases, service monitoring, access controls, and operational troubleshooting for internal systems.</li>
+</ul>
+<p class="technologies"><strong>Technologies:</strong> Python, FastAPI, Playwright, SQLAlchemy, Alembic, PostgreSQL, Redis, Celery, ChromaDB, Ollama, Docker, Linux</p>
+</article>
+<article>
+<h3>NEAR AI, IronClaw, Remote</h3>
+<p class="role">Open Source Software Engineer</p>
+<ul>
+<li>Developed GitHub and Discord integrations in Rust and WebAssembly for IronClaw, NEAR AI's agentic operating system, covering repositories, issues, pull requests, channels, and messages.</li>
+<li>Enforced capability-based security for sandboxed plugins and added event, path, and input validation, safe UTF-8 truncation, and URL encoding for untrusted data.</li>
+<li>Delivered a merged contribution spanning 1,756 lines across eight files and resolved 53 review comments through iterative testing and code review.</li>
+</ul>
+<p class="technologies"><strong>Technologies:</strong> Rust, WebAssembly, wit-bindgen, REST APIs, secure plugin architecture</p>
+<p class="link"><strong>Contribution:</strong> <a href="https://github.com/nearai/ironclaw/pull/34">github.com/nearai/ironclaw/pull/34</a></p>
+</article>
+<article>
+<h3>CAFX, Remote</h3>
+<p class="role">Development Lead</p>
+<ul>
+<li>Built and maintain a low-latency order-processing pipeline in Rust for a high-frequency trading platform, simplifying the critical path to reduce abstraction overhead.</li>
+<li>Designed concurrent market-data ingestion across multiple exchanges and integrated Python strategy and analytics services.</li>
+</ul>
+<p class="technologies"><strong>Technologies:</strong> Rust, Python, concurrent systems, market data processing</p>
+<p class="link"><strong>Website:</strong> <a href="https://cafx.io">cafx.io</a></p>
+</article>
+<article>
+<h3>SeaQL, SeaORM Pro, Open Source</h3>
+<p class="role">Software Engineer, Contributor</p>
+<ul>
+<li>Implemented native Actix Web integration for the SeaORM Pro administration panel using a feature-gated architecture.</li>
+<li>Added JWT authentication, GraphQL Playground support, and custom entity schema handling in a 3,277-line contribution spanning 94 files.</li>
+</ul>
+<p class="technologies"><strong>Technologies:</strong> Rust, Actix Web, SeaORM, GraphQL, JWT</p>
+<p class="link"><strong>Contribution:</strong> <a href="https://github.com/SeaQL/sea-orm-pro/pull/3">github.com/SeaQL/sea-orm-pro/pull/3</a></p>
+</article>
+</section>
+<section>
+<h2>Selected Projects</h2>
+<ul class="projects-list">
+<li><strong>Veil:</strong> Built private Solana payment infrastructure with NFC point-of-sale flows, WhatsApp invoicing, confidential cross-border payroll, Sign In With Solana, and Nigerian fiat off-ramps. <strong>Technologies:</strong> Rust, Solana.</li>
+<li><strong>telegram-rs:</strong> Published an asynchronous Telegram Bot API library on crates.io with Mini App validation, a WebAssembly bridge, and TON Connect v2 wallet support. <strong>Technologies:</strong> Rust, WebAssembly, TON.</li>
+<li><strong>Bantr:</strong> Developed a Telegram social betting bot that parses natural-language challenges and resolves outcomes from live TxLINE match data. <strong>Technologies:</strong> Python, Solana.</li>
+<li><strong>Sheda Solutions:</strong> Implemented NEAR smart contracts for property listings, ownership transfers, and escrow-based real estate transactions. <strong>Technologies:</strong> Rust, NEAR Protocol.</li>
+</ul>
+</section>
+<section>
+<h2>Technical Skills</h2>
+<ul class="skills-list">
+<li><strong>Programming Languages:</strong> Rust, Python, Java, TypeScript, JavaScript, SQL</li>
+<li><strong>Backend Frameworks:</strong> Actix Web, Axum, FastAPI, Django, Spring Boot, REST APIs, GraphQL, WebAssembly</li>
+<li><strong>Frontend:</strong> React, Next.js, HTML, CSS</li>
+<li><strong>Data and Databases:</strong> PostgreSQL, SQLite, Redis, SQLAlchemy, SeaORM, SQLx, Hibernate, Alembic, ChromaDB, ETL, data pipelines</li>
+<li><strong>Infrastructure and Operations:</strong> Linux systems administration, Docker, CI/CD, service monitoring, deployment, database administration</li>
+<li><strong>Blockchain:</strong> Solana, Anchor, NEAR Protocol, TON, smart contracts, wallet integrations</li>
+<li><strong>Tools:</strong> Git, Playwright, Celery, Ollama, pytest</li>
+</ul>
+</section>
+<section>
+<h2>Leadership and Recognition</h2>
+<ul class="leadership-list">
+<li>Campus Lead, SuperteamNG, University of Uyo</li>
+<li>Blockchain Lead, Google Developer Groups on Campus, University of Uyo</li>
+<li>Three-time NEAR Protocol bounty winner</li>
+<li>Socrates Interfaculty Debate Champion and Best Speaker, University of Uyo</li>
+</ul>
+</section>
+<section>
+<h2>Education</h2>
+<div class="education-item">
+<h3>University of Uyo, Akwa Ibom, Nigeria</h3>
+<p>Bachelor of Science in Computer Science, In Progress</p>
+</div>
+<div class="education-item">
+<h3>Udemy</h3>
+<ul>
+<li>Certificate in Automation</li>
+<li>Certificate in Backend Development</li>
+</ul>
+</div>
+</section>
+</main>
+</body>
+</html>
