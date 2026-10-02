@@ -3,141 +3,768 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Resume of Peniel Ben, backend and systems engineer.">
-<title>Peniel Ben | Backend and Systems Engineer</title>
+<meta name="description" content="Resume of Peniel Ben - Backend, Systems &amp; Infrastructure Engineer.">
+<title>Peniel Ben - Resume | Backend, Systems &amp; Infrastructure Engineer</title>
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script>
+    (function() {
+        try {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+    })();
+</script>
+
 <style>
-* { box-sizing: border-box; }
-@page { size: letter; margin: 0.5in 0.58in; }
-body { max-width: 850px; margin: 0 auto; padding: 40px 32px; color: #171717; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.42; }
-h1, h2, h3, p, ul { margin-top: 0; }
-h1 { margin-bottom: 4px; font-size: 28px; line-height: 1.15; }
-h2 { margin: 22px 0 9px; padding-bottom: 3px; border-bottom: 1px solid #999; font-size: 15px; line-height: 1.2; letter-spacing: 0.6px; text-transform: uppercase; }
-h3 { margin: 13px 0 2px; font-size: 14px; line-height: 1.25; break-after: avoid; }
-p { margin-bottom: 6px; }
-a { color: #174f91; text-decoration: none; }
-ul { margin-bottom: 7px; padding-left: 20px; }
-li { margin-bottom: 3px; }
-.contact-info { margin-bottom: 0; color: #333; font-size: 13px; }
-.separator { margin: 0 5px; color: #777; }
-.role { margin-bottom: 4px; color: #333; font-style: italic; }
-.technologies, .link { margin-bottom: 4px; color: #333; font-size: 13px; }
-.projects-list, .skills-list, .leadership-list { margin-bottom: 0; }
-.projects-list li { margin-bottom: 5px; }
-.education-item { break-inside: avoid; }
+:root, [data-theme="dark"] {
+    --bg-page: #070709;
+    --bg-card: #0e0e12;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --text-primary: #ededed;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --accent: #34d399;
+    --accent-amber: #f59e0b;
+    --badge-bg: rgba(255, 255, 255, 0.06);
+    --action-bar-bg: rgba(14, 14, 18, 0.88);
+}
+
+[data-theme="light"] {
+    --bg-page: #F7F5F0;
+    --bg-card: #FFFFFF;
+    --border-color: #E2DDD5;
+    --border-subtle: #ECE8E1;
+    --text-primary: #171614;
+    --text-secondary: #4A463F;
+    --text-muted: #7A7469;
+    --accent: #3E5A2B;
+    --accent-amber: #B45309;
+    --badge-bg: #EFECE6;
+    --action-bar-bg: rgba(247, 245, 240, 0.92);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding-bottom: 60px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Action Bar */
+.action-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--action-bar-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto 24px auto;
+}
+
+.action-bar a, .action-bar button {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.action-bar a:hover {
+    color: var(--text-primary);
+}
+
+.action-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-action {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    padding: 6px 14px;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+.btn-action:hover {
+    border-color: var(--text-secondary);
+    background: var(--badge-bg);
+}
+.btn-primary {
+    background: var(--text-primary);
+    color: var(--bg-page) !important;
+    border-color: var(--text-primary);
+    font-weight: 600;
+}
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+[data-theme="light"] .theme-icon-sun { display: none; }
+[data-theme="light"] .theme-icon-moon { display: block; }
+[data-theme="dark"] .theme-icon-sun { display: block; }
+[data-theme="dark"] .theme-icon-moon { display: none; }
+
+/* Document Sheet */
+.resume-sheet {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 48px 52px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+
+/* Header */
+.resume-header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+}
+.name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+.headline {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+}
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+}
+.contact-links a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.contact-links a:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+}
+.contact-sep {
+    color: var(--text-muted);
+}
+
+/* Sections */
+.resume-section {
+    margin-bottom: 24px;
+}
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+}
+
+/* Professional Summary */
+.summary-text {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 13.5px;
+}
+
+/* Competency Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+}
+.skill-category {
+    font-size: 13px;
+    line-height: 1.5;
+}
+.skill-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 12.5px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.skill-val {
+    color: var(--text-secondary);
+}
+
+/* Job Articles */
+.job-item {
+    margin-bottom: 20px;
+    break-inside: avoid;
+}
+.job-item:last-child {
+    margin-bottom: 0;
+}
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+}
+.job-company {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.job-date {
+    font-size: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.job-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+.job-bullets {
+    padding-left: 18px;
+    margin-bottom: 6px;
+}
+.job-bullets li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 4px;
+}
+.job-bullets strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+.job-tech-tag {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+.job-tech-tag strong {
+    color: var(--text-secondary);
+}
+
+/* Projects List */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.project-row {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+.project-row strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+.project-row a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+}
+
+/* Education & Certs */
+.edu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.edu-item h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.edu-item p {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+}
+.cert-list {
+    padding-left: 18px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+}
+.cert-list li {
+    margin-bottom: 3px;
+}
+
+/* Print Stylesheet */
+@page {
+    size: letter;
+    margin: 0.45in 0.5in;
+}
+
 @media print {
-    body { max-width: none; padding: 0; font-size: 11.5px; line-height: 1.3; }
-    h1 { font-size: 22px; }
-    h2 { margin: 13px 0 6px; font-size: 12px; }
-    h3 { margin-top: 8px; font-size: 11.5px; }
-    li { margin-bottom: 2px; }
-    .contact-info, .technologies, .link { font-size: 10.5px; }
-    a { color: #171717; }
+    body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        font-size: 11px !important;
+        line-height: 1.35 !important;
+    }
+    .action-bar {
+        display: none !important;
+    }
+    .resume-sheet {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    .name {
+        font-size: 20px !important;
+        color: #000000 !important;
+    }
+    .headline {
+        font-size: 11.5px !important;
+        color: #222222 !important;
+        margin-bottom: 4px !important;
+    }
+    .contact-links {
+        font-size: 9.5px !important;
+        gap: 8px !important;
+    }
+    .contact-links a {
+        color: #000000 !important;
+        border-bottom: none !important;
+    }
+    .section-title {
+        font-size: 10px !important;
+        margin-bottom: 6px !important;
+        padding-bottom: 2px !important;
+        border-bottom: 1px solid #777777 !important;
+        color: #000000 !important;
+    }
+    .summary-text {
+        font-size: 10.5px !important;
+        color: #222222 !important;
+        line-height: 1.4 !important;
+    }
+    .skills-grid {
+        gap: 4px 14px !important;
+    }
+    .skill-category {
+        font-size: 10px !important;
+    }
+    .skill-label {
+        font-size: 10px !important;
+        color: #000000 !important;
+    }
+    .skill-val {
+        color: #222222 !important;
+    }
+    .resume-section {
+        margin-bottom: 14px !important;
+    }
+    .job-item {
+        margin-bottom: 10px !important;
+        break-inside: avoid;
+    }
+    .job-company {
+        font-size: 11.5px !important;
+        color: #000000 !important;
+    }
+    .job-date {
+        font-size: 9.5px !important;
+        color: #333333 !important;
+    }
+    .job-sub {
+        font-size: 10px !important;
+        margin-bottom: 3px !important;
+        color: #333333 !important;
+    }
+    .job-bullets li {
+        font-size: 10px !important;
+        line-height: 1.35 !important;
+        margin-bottom: 2px !important;
+        color: #222222 !important;
+    }
+    .job-bullets strong {
+        color: #000000 !important;
+    }
+    .job-tech-tag {
+        font-size: 9px !important;
+        color: #444444 !important;
+    }
+    .projects-list {
+        gap: 6px !important;
+    }
+    .project-row {
+        font-size: 10px !important;
+        line-height: 1.35 !important;
+        color: #222222 !important;
+        break-inside: avoid;
+    }
+    .project-row strong {
+        color: #000000 !important;
+    }
+    .project-row a {
+        color: #000000 !important;
+        border-bottom: none !important;
+    }
+    .edu-item h4 {
+        font-size: 10.5px !important;
+        color: #000000 !important;
+    }
+    .edu-item p, .cert-list li {
+        font-size: 9.5px !important;
+        color: #222222 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .resume-sheet {
+        padding: 24px 20px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .action-bar {
+        padding: 10px 16px;
+    }
+    .skills-grid, .edu-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
 <body>
-<header>
-<h1>Peniel Ben</h1>
-<p class="contact-info"><a href="mailto:hello@peni.dev">hello@peni.dev</a><span class="separator">|</span><a href="https://peni.dev">peni.dev</a><span class="separator">|</span><a href="https://github.com/Penivera">github.com/Penivera</a><span class="separator">|</span><a href="https://linkedin.com/in/peniel-ben-065792266">linkedin.com/in/peniel-ben-065792266</a><span class="separator">|</span><a href="https://x.com/Penivera001">x.com/Penivera001</a></p>
-</header>
-<main>
-<section>
-<h2>Professional Summary</h2>
-<p>Backend and systems engineer experienced in government data infrastructure, high-performance trading systems, blockchain applications, and secure developer tooling. Proficient in Rust, Python, Java, and TypeScript, with backend experience across Actix Web, Axum, FastAPI, Django, and Spring Boot.</p>
-</section>
-<section>
-<h2>Professional Experience</h2>
-<article>
-<h3>Akwa Ibom State Internal Revenue Service (AKIRS), Akwa Ibom, Nigeria</h3>
-<p class="role">Systems Developer, Contract</p>
-<ul>
-<li>Engineered the AKIRS Revenue Data Integrity Platform, a FastAPI application that converts inconsistent bank and taxpayer Excel and CSV files into standardized records using heuristic schema mapping, branch filtering, and TIN, BVN, NUBAN, and contact-data validation.</li>
-<li>Implemented configurable deduplication workflows with merge, discard, and manual-review options, enabling revenue officers to resolve identity conflicts and export analysis-ready datasets.</li>
-<li>Architected the AKIRS Revenue Intelligence Platform to discover taxable businesses across all 31 local government areas and enrich records through websites, search, social profiles, geocoding, corporate registries, and commercial data providers.</li>
-<li>Delivered authenticated administration, tax classification, background jobs, database migrations, live job updates, and a local retrieval-augmented generation assistant for querying revenue and tax knowledge.</li>
-<li>Managed Linux and VPS server environments, Docker Compose deployments, databases, health check monitoring, access controls, and operational troubleshooting for internal systems.</li>
-</ul>
-<p class="technologies"><strong>Technologies:</strong> Python, FastAPI, Playwright, SQLAlchemy, Alembic, PostgreSQL, Redis, Celery, ChromaDB, Docker, Docker Compose, Linux</p>
-</article>
-<article>
-<h3>NEAR AI, IronClaw, Remote</h3>
-<p class="role">Open Source Software Engineer</p>
-<ul>
-<li>Developed GitHub and Discord integrations in Rust and WebAssembly for IronClaw, NEAR AI's agentic operating system, covering repositories, issues, pull requests, channels, and messages.</li>
-<li>Enforced capability-based security for sandboxed plugins and added event, path, and input validation, safe UTF-8 truncation, and URL encoding for untrusted data.</li>
-<li>Delivered a merged contribution spanning 1,756 lines across eight files and resolved 53 review comments through iterative testing and code review.</li>
-</ul>
-<p class="technologies"><strong>Technologies:</strong> Rust, WebAssembly, wit-bindgen, REST APIs, secure plugin architecture</p>
-<p class="link"><strong>Contribution:</strong> <a href="https://github.com/nearai/ironclaw/pull/34">github.com/nearai/ironclaw/pull/34</a></p>
-</article>
-<article>
-<h3>CAFX, Remote</h3>
-<p class="role">Development Lead</p>
-<ul>
-<li>Built and maintain a low-latency order-processing pipeline in Rust for a high-frequency trading platform, simplifying the critical path to reduce abstraction overhead.</li>
-<li>Designed concurrent market-data ingestion across multiple exchanges and integrated Python strategy and analytics services.</li>
-</ul>
-<p class="technologies"><strong>Technologies:</strong> Rust, Python, concurrent systems, market data processing</p>
-<p class="link"><strong>Website:</strong> <a href="https://cafx.io">cafx.io</a></p>
-</article>
-<article>
-<h3>SeaQL, SeaORM Pro, Open Source</h3>
-<p class="role">Software Engineer, Contributor</p>
-<ul>
-<li>Implemented native Actix Web integration for the SeaORM Pro administration panel using a feature-gated architecture.</li>
-<li>Added JWT authentication, GraphQL Playground support, and custom entity schema handling in a 3,277-line contribution spanning 94 files.</li>
-</ul>
-<p class="technologies"><strong>Technologies:</strong> Rust, Actix Web, SeaORM, GraphQL, JWT</p>
-<p class="link"><strong>Contribution:</strong> <a href="https://github.com/SeaQL/sea-orm-pro/pull/3">github.com/SeaQL/sea-orm-pro/pull/3</a></p>
-</article>
-</section>
-<section>
-<h2>Selected Projects</h2>
-<ul class="projects-list">
-<li><strong>Veil:</strong> Built private Solana payment infrastructure with NFC point-of-sale flows, WhatsApp invoicing, confidential cross-border payroll, Sign In With Solana, and Nigerian fiat off-ramps. <strong>Technologies:</strong> Rust, Solana.</li>
-<li><strong>telegram-rs:</strong> Published an asynchronous Telegram Bot API library on crates.io with Mini App validation, a WebAssembly bridge, and TON Connect v2 wallet support. <strong>Technologies:</strong> Rust, WebAssembly, TON.</li>
-<li><strong>Bantr:</strong> Developed a Telegram social betting bot that parses natural-language challenges and resolves outcomes from live TxLINE match data. <strong>Technologies:</strong> Python, Solana.</li>
-<li><strong>Sheda Solutions:</strong> Implemented NEAR smart contracts for property listings, ownership transfers, and escrow-based real estate transactions. <strong>Technologies:</strong> Rust, NEAR Protocol.</li>
-</ul>
-</section>
-<section>
-<h2>Technical Skills</h2>
-<ul class="skills-list">
-<li><strong>Programming Languages:</strong> Rust, Python, Java, TypeScript, JavaScript, SQL</li>
-<li><strong>Backend Frameworks:</strong> Actix Web, Axum, FastAPI, Django, Spring Boot, REST APIs, GraphQL, WebAssembly</li>
-<li><strong>Frontend:</strong> React, Next.js, HTML, CSS</li>
-<li><strong>Data and Databases:</strong> PostgreSQL, SQLite, Redis, SQLAlchemy, SeaORM, SQLx, Hibernate, Alembic, ChromaDB, ETL, data pipelines</li>
-<li><strong>DevOps &amp; Infrastructure:</strong> Linux, Docker, Docker Compose, Kubernetes, Windows Server, IIS, Caddy, Nginx, Traefik, VPS, SSH</li>
-<li><strong>CI/CD &amp; Observability:</strong> GitHub Actions, Jenkins, Git Webhooks, CI/CD pipelines, deployment automation, rollbacks, Glitchtip, Sentry, health checks, monitoring &amp; logging</li>
-<li><strong>Blockchain:</strong> Solana, Anchor, NEAR Protocol, TON, smart contracts, wallet integrations</li>
-<li><strong>Tools &amp; Systems:</strong> Git, Tokio, Hyper, Pingora, Celery, Playwright, pytest, Cargo</li>
-</ul>
-</section>
-<section>
-<h2>Leadership and Recognition</h2>
-<ul class="leadership-list">
-<li>Campus Lead, SuperteamNG, University of Uyo</li>
-<li>Blockchain Lead, Google Developer Groups on Campus, University of Uyo</li>
-<li>Three-time NEAR Protocol bounty winner</li>
-<li>Socrates Interfaculty Debate Champion and Best Speaker, University of Uyo</li>
-</ul>
-</section>
-<section>
-<h2>Education &amp; Certifications</h2>
-<div class="education-item">
-<h3>University of Uyo, Akwa Ibom, Nigeria</h3>
-<p>Bachelor of Science in Computer Science, In Progress</p>
-</div>
-<div class="education-item">
-<h3>Licenses &amp; Certifications</h3>
-<ul>
-<li><strong>Solana Developer Certification:</strong> Cyfrin Updraft (Credential ID: ABK3PXG305TX, Jul 2026)</li>
-<li><strong>AI Fundamentals: Foundations for Understanding AI:</strong> IBM SkillsBuild (Mar 2026)</li>
-<li><strong>AI Literacy:</strong> IBM SkillsBuild (Mar 2026)</li>
-<li><strong>Backend and Automations:</strong> Udemy</li>
-</ul>
-</div>
-</section>
+
+<!-- Screen Action Bar -->
+<aside class="action-bar">
+    <a href="index.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Portfolio
+    </a>
+    <div class="action-controls">
+        <button class="btn-action" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="theme-icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            Theme
+        </button>
+        <button class="btn-action btn-primary" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print / Save PDF
+        </button>
+    </div>
+</aside>
+
+<!-- Main Printable Resume Sheet -->
+<main class="resume-sheet">
+
+    <!-- Header -->
+    <header class="resume-header">
+        <h1 class="name">Peniel Ben</h1>
+        <p class="headline">Backend, Systems &amp; Infrastructure Engineer</p>
+        <div class="contact-links">
+            <a href="mailto:hello@peni.dev">hello@peni.dev</a>
+            <span class="contact-sep">&bull;</span>
+            <a href="https://peni.dev">peni.dev</a>
+            <span class="contact-sep">&bull;</span>
+            <a href="https://github.com/Penivera">github.com/Penivera</a>
+            <span class="contact-sep">&bull;</span>
+            <a href="https://linkedin.com/in/peniel-ben-065792266">linkedin.com/in/peniel-ben</a>
+            <span class="contact-sep">&bull;</span>
+            <a href="https://x.com/Penivera001">x.com/Penivera001</a>
+            <span class="contact-sep">&bull;</span>
+            <span>Akwa Ibom, Nigeria (Open to Remote)</span>
+        </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="resume-section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="summary-text">
+            Versatile Backend, Systems, and Infrastructure Engineer experienced in low-level systems programming (Rust, Python), enterprise datacenter virtualization (VMware ESXi, vCenter Server, HPE ProLiant), perimeter network architecture (Sophos XGS 138 NAT rules, Cisco Catalyst VLAN segmentation), directory services (Windows Server 2025 Active Directory, GPO, DNS), and compiler/transpiler performance engineering (CCXT). Proven track record designing high-throughput order pipelines, sandboxing WebAssembly runtimes (NEAR AI IronClaw), and building reliable disaster recovery architectures (Synology RAID 5 &amp; Veeam).
+        </p>
+    </section>
+
+    <!-- Technical Skills / Competencies -->
+    <section class="resume-section">
+        <h2 class="section-title">Technical Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <span class="skill-label">Systems &amp; Compilers: </span>
+                <span class="skill-val">Rust (Tokio, Axum, Actix Web), Python (FastAPI, Celery), TypeScript/Node.js, AST Parsers &amp; Transpilers, mold/lld linkers, Memory Profiling, WebSockets.</span>
+            </div>
+            <div class="skill-category">
+                <span class="skill-label">Virtualization &amp; Enterprise Infra: </span>
+                <span class="skill-val">VMware ESXi 8.x, VMware vCenter (vSphere Client), Linux DMZ Cluster Migration, Traefik Reverse Proxy, Coolify CI/CD, Netplan, Microsoft Azure (Linux VPS), Windows Server 2025/2022, Active Directory (AD DS/GPO), Docker.</span>
+            </div>
+            <div class="skill-category">
+                <span class="skill-label">Networking &amp; Perimeter Security: </span>
+                <span class="skill-val">Sophos XGS 138 Next-Gen Firewall, Multi-Homed Dual-IP (DDoS Mitigation), Windows Bastion Routing, Cisco Catalyst 1300, 4-VLAN Segmentation (MGMT, LAN, DMZ, Storage), Stateful NAT (DNAT/SNAT), IPS.</span>
+            </div>
+            <div class="skill-category">
+                <span class="skill-label">Storage, Backup &amp; Disaster Recovery: </span>
+                <span class="skill-val">Synology DSM Enterprise NAS (RAID 5 + NVMe Cache), Veeam Backup &amp; Replication (BCKUP-SRV01), Dedicated VLAN 30 Transport, Full-VM Instant Restores, File-Level Recovery.</span>
+            </div>
+            <div class="skill-category">
+                <span class="skill-label">Databases &amp; Caching: </span>
+                <span class="skill-val">PostgreSQL, Microsoft SQL Server 2025 (SSMS), Redis, ChromaDB Vector Store, SQLite, SQLAlchemy, SeaORM, SQLx, Alembic.</span>
+            </div>
+            <div class="skill-category">
+                <span class="skill-label">Web3, Security &amp; Telemetry: </span>
+                <span class="skill-val">Solana, Anchor, NEAR Protocol (WASM contracts), TON, Capability-Based Sandboxing, GlitchTip &amp; Sentry APM, GitHub Actions CI/CD, Playwright.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="resume-section">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <!-- Role 1: AKIRS / JRB -->
+        <article class="job-item">
+            <div class="job-header">
+                <span class="job-company">Akwa Ibom State Internal Revenue Service (AKIRS) &amp; Joint Revenue Board (JRB)</span>
+                <span class="job-date">Akwa Ibom, Nigeria &bull; Contract</span>
+            </div>
+            <div class="job-sub">
+                <span>Systems &amp; Infrastructure Developer</span>
+                <span>2024 &ndash; Present</span>
+            </div>
+            <ul class="job-bullets">
+                <li>Administered the <strong>Akwa Ibom State (AKS) segment</strong> of the enterprise datacenter infrastructure deployed at <strong>Equinix Colocation Datacenter</strong> under the Joint Revenue Board (JRB) Programme, clustering dual HPE ProLiant Gen10 compute nodes running <strong>VMware ESXi 8.x</strong> and <strong>vCenter Server (vSphere Client)</strong> with dynamic compute resource allocation and zero-downtime VM migrations, in collaboration with the datacenter team where and when necessary.</li>
+                <li>Orchestrated the migration of <strong>4 application servers in the DMZ cluster</strong> from Windows Server to hardened Linux without breaching DMZ (VLAN 20) isolation; overcame hypervisor console clipboard barriers and static IP constraints (no DHCP, air-gapped VM) by synthesizing custom virtual ISO images locally and mounting them via vSphere to bind Netplan static network configurations.</li>
+                <li>Implemented <strong>dual-IP multi-homed networking</strong> on edge Linux instances (dedicated separate IP addresses for inbound ingress vs. outbound egress traffic) to isolate traffic planes, mitigate DDoS attack surfaces, and eliminate connection state exhaustion.</li>
+                <li>Architected edge traffic routing from the Windows bastion server through <strong>Sophos XGS 138</strong> firewall NAT policies into an internal edge Linux VM operating as a reverse proxy running <strong>Traefik</strong>.</li>
+                <li>Engineered high-availability edge routing, reverse proxy mappings, and infrastructure supporting public-facing government services, including the official state revenue portal (<a href="https://akirs.ak.gov.ng/" target="_blank" style="color:var(--text-primary); text-decoration:underline;">akirs.ak.gov.ng</a>), ensuring reliable digital tax assessments and citizen service availability.</li>
+                <li>Deployed a self-hosted <strong>Coolify</strong> automation engine to manage containerized Docker workloads over encrypted internal SSH keypairs using internal static IPs, enforcing granular least-privilege RBAC permission sets.</li>
+                <li>Designed and enforced <strong>4-VLAN network segmentation</strong> on <strong>Cisco Catalyst 1300</strong> switches (VLAN 1 MGMT, VLAN 10 LAN, VLAN 20 DMZ, VLAN 30 Storage), isolating core database nodes and backup traffic from web application interfaces.</li>
+                <li>Configured perimeter traffic rules on Sophos XGS 138 firewall, implementing strict DNAT (Port Forwarding), outbound SNAT filtering, Intrusion Prevention System (IPS) policies, and <strong>Starlink Satellite WAN</strong> failover routing.</li>
+                <li>Configured <strong>Windows Server 2025 Active Directory Domain Controller (STATE-DC01)</strong>, managing user accounts, security groups, AD-integrated DNS, and enterprise Group Policy Objects (GPOs) for password complexity, account lockout, and automated security patch baselines.</li>
+                <li>Architected backup and disaster recovery on an enterprise <strong>Synology NAS (RAID 5 + NVMe SSD Cache)</strong> over dedicated, non-routed VLAN 30 to <strong>Veeam Backup Appliance (BCKUP-SRV01)</strong>; verified synthetic fulls, incremental schedules, and conducted live full-VM instant restore drills.</li>
+                <li>Engineered the <strong>AKIRS Revenue Data Integrity Platform</strong> (FastAPI, PostgreSQL, Redis) and <strong>AKIRS Revenue Intelligence Platform</strong> with local RAG assistant (ChromaDB) covering all 31 LGAs.</li>
+            </ul>
+            <p class="job-tech-tag"><strong>Technologies:</strong> VMware ESXi 8.x, vCenter / vSphere, Linux DMZ Migration, Traefik, Coolify, Netplan, Multi-Homed Dual-IP, Sophos XGS 138 (NAT/IPS), Cisco Catalyst 1300, Windows Server 2025 (AD DS/GPO), Synology DSM (RAID 5), Veeam Backup, Docker, Python, FastAPI</p>
+        </article>
+
+        <!-- Role 2: CCXT -->
+        <article class="job-item">
+            <div class="job-header">
+                <span class="job-company">CCXT (Crypto Currency eXchange Trading Library) - Open Source</span>
+                <span class="job-date">Remote</span>
+            </div>
+            <div class="job-sub">
+                <span>Open Source Systems &amp; Performance Engineer</span>
+                <span>2026</span>
+            </div>
+            <ul class="job-bullets">
+                <li>Authored architectural refactoring (<strong>Pull Request #30723</strong>) for CCXT (34,000+ GitHub stars), extracting the hand-written engine runtime (<code style="font-size:0.95em;">Value</code>, <code style="font-size:0.95em;">Exchange</code>, <code style="font-size:0.95em;">OrderRouter</code>, <code style="font-size:0.95em;">Precise</code>, WebSocket primitives) into <code style="font-size:0.95em;">rust/ccxt-core</code> and re-exporting it from <code style="font-size:0.95em;">rust/ccxt-base</code> with zero breaking changes for ~200 generated exchange venues.</li>
+                <li>Significantly accelerated internal developer iteration loops by eliminating monolithic venue recompilation during engine <code style="font-size:0.95em;">cargo check</code> and test passes.</li>
+                <li>Capped transpiler child-process fan-out to <code style="font-size:0.95em;">Math.min(4, os.availableParallelism())</code>, eliminating runner Out-Of-Memory (OOM) termination and swap thrashing on high-core runners.</li>
+                <li>Added clean lifecycle <code style="font-size:0.95em;">destroy()</code> handlers for <code style="font-size:0.95em;">piscina</code> worker thread pools across C#, Go, and Java transpilers, optimized AST program batch caching to prevent LRU thrashing, and implemented automated high-performance linker detection (<code style="font-size:0.95em;">mold</code> &rarr; <code style="font-size:0.95em;">lld</code>).</li>
+            </ul>
+            <p class="job-tech-tag"><strong>Technologies:</strong> Rust, TypeScript, AST Transpilers, Node.js Worker Pools (Piscina), mold / lld Linkers, High Concurrency, Cargo</p>
+        </article>
+
+        <!-- Role 3: NEAR AI -->
+        <article class="job-item">
+            <div class="job-header">
+                <span class="job-company">NEAR AI - IronClaw</span>
+                <span class="job-date">Remote</span>
+            </div>
+            <div class="job-sub">
+                <span>Open Source Software Engineer (Systems &amp; Security)</span>
+                <span>2025 &ndash; 2026</span>
+            </div>
+            <ul class="job-bullets">
+                <li>Engineered sandboxed GitHub and Discord WebAssembly (WASM) integrations in Rust for IronClaw, NEAR AI's agentic operating system.</li>
+                <li>Enforced capability-based security boundaries for third-party agent plugins, preventing untrusted code from accessing unauthorized system resources or arbitrary network sockets.</li>
+                <li>Implemented strict event validation, path traversal defenses, safe multi-byte UTF-8 string truncation, and URL encoding for untrusted inputs; merged after resolving 53 review comments (1,756 lines across 8 files, <strong>PR #34</strong>).</li>
+            </ul>
+            <p class="job-tech-tag"><strong>Technologies:</strong> Rust, WebAssembly (WASM), wit-bindgen, Capability-Based Security, REST APIs</p>
+        </article>
+
+        <!-- Role 4: CAFX -->
+        <article class="job-item">
+            <div class="job-header">
+                <span class="job-company">CAFX</span>
+                <span class="job-date">Remote</span>
+            </div>
+            <div class="job-sub">
+                <span>Development Lead</span>
+                <span>2025 &ndash; Present</span>
+            </div>
+            <ul class="job-bullets">
+                <li>Engineered and maintain low-latency order execution pipeline in Rust for a high-frequency trading platform, simplifying critical paths to minimize runtime overhead.</li>
+                <li>Designed concurrent market-data ingestion across multiple top-tier digital asset exchanges, multiplexing order books to Python strategy and quantitative analytics microservices.</li>
+            </ul>
+            <p class="job-tech-tag"><strong>Technologies:</strong> Rust, Python, Tokio, WebSockets, Low-Latency Market Data, Concurrency</p>
+        </article>
+
+        <!-- Role 5: Faschcom -->
+        <article class="job-item">
+            <div class="job-header">
+                <span class="job-company">Faschcom</span>
+                <span class="job-date">Remote / Hybrid</span>
+            </div>
+            <div class="job-sub">
+                <span>Systems, Backend &amp; Automation Engineer</span>
+                <span>2024 - 2025</span>
+            </div>
+            <ul class="job-bullets">
+                <li>Engineered scalable backend services, asynchronous workers, and custom web/process automation workflows using Python to eliminate operational bottlenecks.</li>
+                <li>Architected full-lifecycle telemetry, application performance monitoring (APM), and distributed error tracking using <strong>GlitchTip</strong> and <strong>Sentry</strong>, instrumenting real-time crash reporting, performance tracing, and alert routing.</li>
+                <li>Managed cloud infrastructure solely on <strong>Linux VPS instances on Microsoft Azure</strong>, executing server provisioning, systemd daemonization, SSH key hardening, automated backup routines, and resource optimization.</li>
+                <li>Configured reverse proxies, automated health-check monitoring, and continuous deployment workflows to maintain high platform availability.</li>
+            </ul>
+            <p class="job-tech-tag"><strong>Technologies:</strong> Python, Microsoft Azure (Linux VPS), GlitchTip, Sentry, Telemetry &amp; APM, Systemd, Reverse Proxies, Docker, Automation</p>
+        </article>
+
+        <!-- Role 6: SeaQL -->
+        <article class="job-item">
+            <div class="job-header">
+                <span class="job-company">SeaQL - SeaORM Pro</span>
+                <span class="job-date">Open Source</span>
+            </div>
+            <div class="job-sub">
+                <span>Software Engineer (Contributor)</span>
+                <span>2025</span>
+            </div>
+            <ul class="job-bullets">
+                <li>Authored native Actix Web integration for the SeaORM Pro admin panel across 94 files (3,277 additions, <strong>PR #3</strong>).</li>
+                <li>Implemented modular feature-gated compilation, JWT session authentication, and interactive GraphQL playground support for custom entity schemas.</li>
+            </ul>
+            <p class="job-tech-tag"><strong>Technologies:</strong> Rust, Actix Web, SeaORM, GraphQL, JWT, Relational Schema Management</p>
+        </article>
+
+    </section>
+
+    <!-- Selected Projects -->
+    <section class="resume-section">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="projects-list">
+            <div class="project-row">
+                <strong>Veil:</strong> Private payment infrastructure on Solana featuring NFC contactless tap-to-pay (turning phones into POS terminals), WhatsApp conversational invoicing, confidential cross-border payroll with Umbra privacy primitives, and automated fiat off-ramps to Nigerian bank accounts via Pajramp. (<a href="https://github.com/Penivera/veil">github.com/Penivera/veil</a>)
+            </div>
+            <div class="project-row">
+                <strong>telegram-rs:</strong> Published asynchronous Rust library for Telegram Bot API on crates.io, featuring Telegram Mini App cryptographic initData validation, WASM bridge, and TON Connect v2 wallet integration. (<a href="https://crates.io/crates/telegram-rs-2">crates.io/crates/telegram-rs-2</a>)
+            </div>
+            <div class="project-row">
+                <strong>Bridge:</strong> Multi-VM fault-tolerant gossip network built in Rust featuring decentralized peer discovery, heartbeat monitoring, and deterministic message delivery across isolated environments. (<a href="https://github.com/Penivera/Bridge">github.com/Penivera/Bridge</a>)
+            </div>
+            <div class="project-row">
+                <strong>Bantr:</strong> Telegram watch-party social betting bot for the World Cup parsing natural language wagers and settling outcomes automatically from live TxLINE match feeds. Built for TxODDS Hackathon. (<a href="https://usebantr.site">usebantr.site</a>)
+            </div>
+            <div class="project-row">
+                <strong>Sheda Solutions:</strong> Real estate smart contracts on NEAR Protocol handling property listings, title verification, and escrow settlement logic on-chain.
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Community -->
+    <section class="resume-section">
+        <h2 class="section-title">Leadership &amp; Honors</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <span class="skill-label">Community Leadership: </span>
+                <span class="skill-val">Campus Lead at SuperteamNG (UNIUYO); Blockchain Lead at Google Developer Groups (GDG) on Campus, University of Uyo; Co-founder at CRYPTOBLISS_01.</span>
+            </div>
+            <div class="skill-category">
+                <span class="skill-label">Honors &amp; Bounties: </span>
+                <span class="skill-val">3-time NEAR Protocol Bounty Winner (including Qbit protocol bounty); Undefeated Socrates Interfaculty Debate Champion &amp; Best Speaker, UNIUYO Faculty of Computing.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section class="resume-section" style="margin-bottom: 0;">
+        <h2 class="section-title">Education &amp; Certifications</h2>
+        <div class="edu-grid">
+            <div class="edu-item">
+                <h4>University of Uyo, Akwa Ibom, Nigeria</h4>
+                <p>Bachelor of Science in Computer Science (In Progress)</p>
+            </div>
+            <div class="edu-item">
+                <h4>Licenses &amp; Certifications</h4>
+                <ul class="cert-list">
+                    <li><strong>Solana Developer Certification:</strong> Cyfrin Updraft (Credential ID: ABK3PXG305TX, Jul 2026)</li>
+                    <li><strong>AI Fundamentals &amp; AI Literacy:</strong> IBM SkillsBuild (Mar 2026)</li>
+                    <li><strong>Backend and Automations:</strong> Udemy</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
 </main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function() {
+            var current = document.documentElement.getAttribute('data-theme') || 'dark';
+            var next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try {
+                localStorage.setItem('theme', next);
+            } catch (e) {}
+        });
+    }
+</script>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peniel Ben</title>
-    <meta name="description" content="I build reliable systems that solve difficult problems. Backend infrastructure, blockchain tooling, trading systems, and developer tools.">
+    <title>Peniel Ben - Backend, Systems &amp; Infrastructure Engineer</title>
+    <meta name="description" content="Peniel Ben is a Backend, Systems &amp; Infrastructure Engineer specializing in Rust, Python, enterprise virtualization (VMware ESXi, vSphere), high-performance compiler tooling (CCXT), and distributed systems.">
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
@@ -17,7 +17,18 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/animations.css">
 
-    <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = saved || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {}
+            document.documentElement.classList.remove('no-js');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
 </head>
 <body>
     <div class="noise"></div>
@@ -26,12 +37,33 @@
 
     <nav class="site-nav" id="nav">
         <div class="container nav-inner">
-            <a href="#intro" class="logo">Peniel Ben</a>
+            <a href="#intro" class="logo">
+                Peniel Ben
+                <span class="logo-role">/ Systems &amp; Infra</span>
+            </a>
             <div class="nav-links">
-                <a href="#workshop">Work</a>
-                <a href="#community">Community</a>
-                <a href="resume.html">Resume</a>
-                <a href="#conversation">Say Hello</a>
+                <a href="#intro"><span class="nav-num">01.</span> About</a>
+                <a href="#toolkit"><span class="nav-num">02.</span> Toolkit</a>
+                <a href="#workshop"><span class="nav-num">03.</span> Selected Work</a>
+                <a href="#community"><span class="nav-num">04.</span> Community</a>
+                <a href="resume.html" class="nav-resume-pill">Resume</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+                    <svg class="theme-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <span class="theme-toggle-text">Theme</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -49,7 +81,7 @@
                 <div class="container">
                     <div class="moment-content">
                         <p class="thought-large reveal-text">I'm Peniel.</p>
-                        <p class="thought-medium reveal-text">I build reliable systems that solve difficult problems. Backend infrastructure, blockchain tooling, trading systems, developer tools. Simply put, I enjoy making things that work well under pressure.</p>
+                        <p class="thought-medium reveal-text">I build reliable systems that solve difficult problems. Low-level systems, compiler tooling, high-throughput trading engines, enterprise virtualization, and mission-critical government infrastructure. Simply put, I enjoy making things that work deterministically under extreme pressure.</p>
                     </div>
                 </div>
             </section>
@@ -58,10 +90,10 @@
                 <div class="crosshair top-right"></div>
                 <div class="container">
                     <div class="moment-content">
-                        <p class="thought-large reveal-text">I care about speed.</p>
+                        <p class="thought-large reveal-text">I care about speed &amp; compiler latency.</p>
                         <div class="thought-detail reveal-text">
                             <span class="thought-meta">01</span>
-                            <p class="thought-medium">When you're processing market data or handling trades, every millisecond counts. I usually reach for Rust when performance matters. At CAFX, I built the core order processing pipeline specifically to remove abstraction layers that were slowing things down.</p>
+                            <p class="thought-medium">When you're processing market data or orchestrating hundreds of exchange venues, every millisecond and byte of memory counts. In my recent work on <a href="https://github.com/ccxt/ccxt/pull/30723" target="_blank" class="inline-link"><strong>CCXT (34k+ stars)</strong></a>, I decoupled the Rust core engine runtime into <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">ccxt-core</code>, eliminated recompilation overhead across ~200 generated exchange venues, capped transpile worker concurrency to eliminate runner OOM terminations, and added high-performance <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">mold/lld</code> linker optimizations.</p>
                         </div>
                     </div>
                 </div>
@@ -71,10 +103,28 @@
                 <div class="crosshair bottom-left"></div>
                 <div class="container">
                     <div class="moment-content align-right">
-                        <p class="thought-large reveal-text">I work across the whole stack.</p>
+                        <p class="thought-large reveal-text">I engineer enterprise infrastructure &amp; virtualization.</p>
                         <div class="thought-detail reveal-text">
                             <span class="thought-meta">02</span>
-                            <p class="thought-medium">I've built on Solana, NEAR, and TON. I've written payment infrastructure, staking programs, real estate contracts, and developer SDKs. I don't stay in one corner of the ecosystem. I go where the interesting problems are.</p>
+                            <p class="thought-medium">I don't just write application code; I design and operate the bare-metal hardware, hypervisors, and networks it lives on. Focusing specifically on the Akwa Ibom State (AKS) segment of the Joint Revenue Board (JRB) infrastructure at Equinix Colocation Datacenter in collaboration with the datacenter team, I managed clustered VMware ESXi hosts and vCenter, segmented critical traffic across 4 VLANs (MGMT, LAN, DMZ, Storage), enforced zone-based Sophos XGS firewall NAT rules and IPS threat inspection, administered Windows Server 2025 Active Directory and GPOs, and built dedicated VLAN 30 Synology RAID 5 Veeam backup pipelines, powering state services including the public portal (<a href="https://akirs.ak.gov.ng/" target="_blank" class="inline-link">akirs.ak.gov.ng</a>).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="moment">
+                <div class="crosshair top-right"></div>
+                <div class="container">
+                    <div class="moment-content">
+                        <p class="thought-large reveal-text">Frustration births engineering breakthroughs.</p>
+                        <div class="thought-detail reveal-text">
+                            <span class="thought-meta">03</span>
+                            <div class="thought-medium">
+                                <p>When migrating an air-gapped application server cluster in the DMZ to Linux, you face raw hypervisor reality: strictly static internal IPs, no DHCP, zero internet inside the VM, and isolated console clipboards preventing copy-pasting YAML into vim-tiny. You can't run <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">apt install vim</code>, and YAML indentation errors are fatal.</p>
+                                <p style="margin-top: 10px;">The breakthrough: I wrote the Netplan config locally, uploaded it to the hypervisor host, burned it into a virtual ISO image, and attached it as a bootable CD-ROM to the live Linux VM in vSphere. Mounted the disk, extracted the file, ran <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">netplan try</code>, and watched Cloudflare ICMP replies flood in.</p>
+                                <p style="margin-top: 10px;">Then I migrated 3 more servers to Linux without ever breaching the DMZ, configured dual-IP multi-homing to isolate inbound vs outbound traffic against DDoS, routed edge traffic from the Windows bastion through Sophos firewall to Traefik, and orchestrated automated internal deployments via Coolify.</p>
+                                <a href="https://x.com/Penivera001/status/2102325619329528238" target="_blank" class="story-link">Read the live engineering breakdown on X &rarr;</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,11 +132,11 @@
 
             <section class="moment">
                 <div class="container">
-                    <div class="moment-content">
+                    <div class="moment-content align-right">
                         <p class="thought-large reveal-text">I think about security before features.</p>
                         <div class="thought-detail reveal-text">
-                            <span class="thought-meta">03</span>
-                            <p class="thought-medium">When I contributed to IronClaw at NEAR AI, I had to sandbox WASM plugins that interact with GitHub and Discord. That PR went through 53 review comments before it was merged. Security boundaries have to be right from the start  you can't patch them in later.</p>
+                            <span class="thought-meta">04</span>
+                            <p class="thought-medium">When I contributed to IronClaw at NEAR AI, I implemented capability-based sandboxing for WebAssembly plugins interacting with GitHub and Discord APIs. That PR spanned 1,756 lines and survived 53 review comments before merging. Whether configuring ESXi vSphere datastores, authoring stateful firewall NAT rules, or sandboxing WASM runtimes, security boundaries must be mathematically sound from day zero.</p>
                         </div>
                     </div>
                 </div>
@@ -95,105 +145,446 @@
             <section class="moment">
                 <div class="crosshair top-left"></div>
                 <div class="container">
-                    <div class="moment-content align-right">
+                    <div class="moment-content">
                         <p class="thought-large reveal-text">I also build the community around the code.</p>
                         <div class="thought-detail reveal-text">
-                            <span class="thought-meta">04</span>
-                            <p class="thought-medium">I'm the Campus Lead for SuperteamNG at UNIUYO and the Blockchain Lead for GDG on Campus. I brought the Solana Students Africa tour to my university. I organize workshops, write technical articles, and try to make the ecosystem more accessible to people who are just starting out.</p>
+                            <span class="thought-meta">05</span>
+                            <p class="thought-medium">I'm the Campus Lead for SuperteamNG at UNIUYO, Blockchain Lead for GDG on Campus, and the undefeated Socrates Interfaculty Debate Champion. I brought the Solana Students Africa tour to my university, won 3 NEAR Protocol ecosystem bounties, publish deep-dive architectural analyses on Coinsbench and Medium, and mentor emerging engineers.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- METRICS & PROVEN IMPACT                     -->
+            <!-- ═══════════════════════════════════════════ -->
+
+            <section class="metrics-section">
+                <div class="container">
+                    <div class="metrics-grid">
+                        <div class="metric-card reveal-item">
+                            <span class="metric-tag">Open Source Impact</span>
+                            <span class="metric-val">34k+ Stars</span>
+                            <p class="metric-desc">CCXT core engine decoupling &amp; transpile concurrency optimization (PR #30723).</p>
+                        </div>
+                        <div class="metric-card reveal-item">
+                            <span class="metric-tag">Datacenter Migration</span>
+                            <span class="metric-val">4 Linux Nodes</span>
+                            <p class="metric-desc">Air-gapped ISO bootstrap, DMZ isolation, Traefik edge routing &amp; Coolify CI/CD.</p>
+                        </div>
+                        <div class="metric-card reveal-item">
+                            <span class="metric-tag">WASM Security</span>
+                            <span class="metric-val">1,756 LOC</span>
+                            <p class="metric-desc">Sandboxed NEAR AI IronClaw plugins merged after 53 thorough review comments.</p>
+                        </div>
+                        <div class="metric-card reveal-item">
+                            <span class="metric-tag">Recognition</span>
+                            <span class="metric-val">3x Winner</span>
+                            <p class="metric-desc">NEAR Protocol ecosystem bounty winner, including Qbit protocol bounty.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- ═══════════════════════════════════════════ -->
-            <!-- PART 2: THE WORKSHOP                        -->
+            <!-- PART 2: TECHNICAL TOOLKIT                   -->
+            <!-- ═══════════════════════════════════════════ -->
+
+            <section class="toolkit-section" id="toolkit">
+                <div class="container">
+                    <div class="section-header reveal-text">
+                        <span class="section-eyebrow">02. Architecture &amp; Toolkit</span>
+                        <h2 class="section-title">Technical Toolkit</h2>
+                        <p class="section-desc">Disciplined engineering across low-level runtimes, datacenter hypervisors, enterprise networking, and distributed ledgers.</p>
+                    </div>
+
+                    <div class="toolkit-grid">
+                        <!-- Card 1: Systems & Compilers -->
+                        <div class="toolkit-card reveal-item">
+                            <div class="toolkit-icon-header">
+                                <h3 class="toolkit-domain">Systems, Compilers &amp; Performance</h3>
+                                <span class="toolkit-badge">Core Engine</span>
+                            </div>
+                            <p class="toolkit-summary">High-performance runtime architecture, memory profiling, compiler AST parsing, and low-latency critical path execution.</p>
+                            <div class="toolkit-tags">
+                                <span class="skill-pill">Rust (Tokio, Axum, Actix)</span>
+                                <span class="skill-pill">Python (FastAPI, Celery)</span>
+                                <span class="skill-pill">TypeScript / Node.js</span>
+                                <span class="skill-pill">AST Parsers &amp; Transpilers</span>
+                                <span class="skill-pill">mold / lld High-Perf Linkers</span>
+                                <span class="skill-pill">Memory Profiling</span>
+                                <span class="skill-pill">WebSockets &amp; WebWorker Pools</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Enterprise Virtualization & Infra -->
+                        <div class="toolkit-card reveal-item">
+                            <div class="toolkit-icon-header">
+                                <h3 class="toolkit-domain">Virtualization &amp; Enterprise Infra</h3>
+                                <span class="toolkit-badge">Datacenter</span>
+                            </div>
+                            <p class="toolkit-summary">Bare-metal hypervisor clustering, air-gapped Linux migrations, automated continuous deployments, and server lifecycle governance.</p>
+                            <div class="toolkit-tags">
+                                <span class="skill-pill">VMware ESXi 8.x</span>
+                                <span class="skill-pill">vCenter Server / vSphere Client</span>
+                                <span class="skill-pill">Linux DMZ Cluster Migration</span>
+                                <span class="skill-pill">Traefik Reverse Proxy</span>
+                                <span class="skill-pill">Coolify CI/CD Orchestration</span>
+                                <span class="skill-pill">Netplan YAML &amp; ISO Bootstrapping</span>
+                                <span class="skill-pill">Windows Server 2025/2022</span>
+                                <span class="skill-pill">Active Directory &amp; GPO Hardening</span>
+                                <span class="skill-pill">Docker Compose</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Networking & Security -->
+                        <div class="toolkit-card reveal-item">
+                            <div class="toolkit-icon-header">
+                                <h3 class="toolkit-domain">Networking, Security &amp; Perimeter</h3>
+                                <span class="toolkit-badge">Perimeter</span>
+                            </div>
+                            <p class="toolkit-summary">Multi-homed dual-IP routing, isolated zone segmentation, stateful packet filtering, threat prevention, and satellite WAN redundancy.</p>
+                            <div class="toolkit-tags">
+                                <span class="skill-pill">Sophos XGS 138 Next-Gen Firewall</span>
+                                <span class="skill-pill">Multi-Homed Dual-IP (DDoS Mitigation)</span>
+                                <span class="skill-pill">Windows Bastion &amp; Jump Host Routing</span>
+                                <span class="skill-pill">Cisco Catalyst 1300 Switches</span>
+                                <span class="skill-pill">4-VLAN Segmentation (MGMT/LAN/DMZ/Storage)</span>
+                                <span class="skill-pill">Stateful NAT (DNAT / SNAT)</span>
+                                <span class="skill-pill">Intrusion Prevention (IPS)</span>
+                                <span class="skill-pill">Starlink Satellite WAN Failover</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Storage, Backup & DR -->
+                        <div class="toolkit-card reveal-item">
+                            <div class="toolkit-icon-header">
+                                <h3 class="toolkit-domain">Storage, Backup &amp; Disaster Recovery</h3>
+                                <span class="toolkit-badge">Continuity</span>
+                            </div>
+                            <p class="toolkit-summary">Resilient storage arrays, non-routed backup transports, zero-data-loss recovery drills, and database continuity.</p>
+                            <div class="toolkit-tags">
+                                <span class="skill-pill">Synology DSM Enterprise NAS</span>
+                                <span class="skill-pill">RAID 5 + NVMe SSD Cache</span>
+                                <span class="skill-pill">Veeam Backup &amp; Replication</span>
+                                <span class="skill-pill">Dedicated VLAN 30 Backup Fabric</span>
+                                <span class="skill-pill">Instant Full-VM &amp; File Restore</span>
+                                <span class="skill-pill">Microsoft SQL Server 2025 SSMS</span>
+                                <span class="skill-pill">RPO / RTO Optimization</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Distributed Systems & Web3 -->
+                        <div class="toolkit-card reveal-item">
+                            <div class="toolkit-icon-header">
+                                <h3 class="toolkit-domain">Distributed Systems &amp; Web3</h3>
+                                <span class="toolkit-badge">Decentralized</span>
+                            </div>
+                            <p class="toolkit-summary">Sandboxed execution runtimes, confidential payment protocols, real-time gossip networks, and audited smart contracts.</p>
+                            <div class="toolkit-tags">
+                                <span class="skill-pill">Solana &amp; Anchor Framework</span>
+                                <span class="skill-pill">NEAR Protocol (near-sdk-rs)</span>
+                                <span class="skill-pill">TON &amp; TON Connect v2</span>
+                                <span class="skill-pill">WebAssembly (WASM)</span>
+                                <span class="skill-pill">NFC Point-of-Sale (POS)</span>
+                                <span class="skill-pill">Multi-VM Gossip Protocols</span>
+                                <span class="skill-pill">High-Frequency Trading Engines</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Databases & CI/CD -->
+                        <div class="toolkit-card reveal-item">
+                            <div class="toolkit-icon-header">
+                                <h3 class="toolkit-domain">Cloud, Telemetry &amp; CI/CD</h3>
+                                <span class="toolkit-badge">Operations</span>
+                            </div>
+                            <p class="toolkit-summary">Linux cloud infrastructure, distributed telemetry &amp; error tracing, deterministic data pipelines, and automation.</p>
+                            <div class="toolkit-tags">
+                                <span class="skill-pill">Microsoft Azure (Linux VPS)</span>
+                                <span class="skill-pill">GlitchTip &amp; Sentry Telemetry</span>
+                                <span class="skill-pill">PostgreSQL &amp; Alembic</span>
+                                <span class="skill-pill">Redis &amp; Caching</span>
+                                <span class="skill-pill">GitHub Actions CI/CD</span>
+                                <span class="skill-pill">Python Process Automation</span>
+                                <span class="skill-pill">Playwright Automation</span>
+                                <span class="skill-pill">Caddy / Nginx Reverse Proxies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- PART 3: THE WORKSHOP                        -->
             <!-- ═══════════════════════════════════════════ -->
 
             <section class="workshop-section" id="workshop">
                 <div class="container">
                     <div class="section-header reveal-text">
+                        <span class="section-eyebrow">03. Selected Work</span>
                         <h2 class="section-title">The Workshop</h2>
-                        <p class="section-desc">Featured work, open source contributions, and experiments.</p>
+                        <p class="section-desc">Featured case studies across compiler performance, enterprise datacenter infrastructure, low-latency trading, and Web3 systems.</p>
                     </div>
 
-                    <!-- Featured Projects -->
+                    <!-- Category Filter Bar -->
+                    <div class="filter-bar reveal-text">
+                        <button class="filter-btn active" data-filter="all">All Work <span class="filter-count">(08)</span></button>
+                        <button class="filter-btn" data-filter="compilers">Compilers &amp; Open Source <span class="filter-count">(03)</span></button>
+                        <button class="filter-btn" data-filter="infra">Infra &amp; Systems <span class="filter-count">(03)</span></button>
+                        <button class="filter-btn" data-filter="web3">Web3 &amp; Fintech <span class="filter-count">(04)</span></button>
+                    </div>
+
+                    <!-- Featured Projects List -->
                     <div class="featured-projects">
 
-                        <article class="project-feature reveal-item">
+                        <!-- PROJECT 1: CCXT -->
+                        <article class="project-feature reveal-item" data-category="compilers open-source systems">
                             <div class="project-feature-header">
-                                <span class="project-tag">Government Data Infrastructure / Python + FastAPI</span>
+                                <div class="project-category-row">
+                                    <span class="project-tag">Open Source / Rust + TypeScript + Compilers</span>
+                                    <span class="project-badge">Pull Request #30723</span>
+                                </div>
+                                <h3 class="project-title">CCXT - Rust Engine Decoupling &amp; Transpiler Concurrency Architecture</h3>
+                                <p class="project-desc">Major architectural and performance overhaul of the Rust engine and TypeScript transpilation pipeline for CCXT, the industry-standard cryptocurrency trading framework (34k+ stars on GitHub). Decoupled the core runtime engine into a dedicated crate, eliminated recompilation overhead across ~200 generated exchange venues, and resolved catastrophic runner out-of-memory terminations on high-core runners.</p>
+                                
+                                <ul class="project-highlights">
+                                    <li><strong>Engine Decoupling:</strong> Extracted hand-written core runtime (<code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">Value</code>, <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">Exchange</code>, <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">OrderRouter</code>, <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">Precise</code>, WebSocket primitives) into <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">rust/ccxt-core</code>. Refactored <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">rust/ccxt-base</code> to re-export it with zero breaking changes for ~200 venues.</li>
+                                    <li><strong>Iteration Speedup:</strong> Drastically accelerated internal developer check and test cycles by skipping monolithic recompilation of ~200 venue modules during engine work.</li>
+                                    <li><strong>OOM Elimination:</strong> Capped default transpile worker child-process fan-out to <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">Math.min(4, os.availableParallelism())</code>, eliminating runner OOM terminations and swap thrashing on high-core machines.</li>
+                                    <li><strong>Worker Lifecycle &amp; AST Cache:</strong> Added explicit <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">destroy()</code> cleanups for <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">piscina</code> worker thread heaps across C#, Go, and Java transpilers, plus cached program batches in <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">worker-program-batch.ts</code> to prevent LRU thrashing.</li>
+                                    <li><strong>Linker Optimization:</strong> Integrated automated high-performance linker detection (<code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">mold</code> &rarr; <code style="font-size:0.9em; padding:2px 4px; border-radius:4px; background:var(--color-badge-bg);">lld</code>) in cargo runner tooling.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">Rust</span>
+                                    <span class="tech-pill">TypeScript</span>
+                                    <span class="tech-pill">Node.js Worker Threads</span>
+                                    <span class="tech-pill">AST Transpilers</span>
+                                    <span class="tech-pill">Piscina Pool</span>
+                                    <span class="tech-pill">mold / lld</span>
+                                    <span class="tech-pill">High Concurrency</span>
+                                </div>
+                            </div>
+                            <div class="project-feature-links">
+                                <a href="https://github.com/ccxt/ccxt/pull/30723" target="_blank" class="link-pill link-pill-primary">View GitHub PR #30723 &rarr;</a>
+                                <a href="https://github.com/ccxt/ccxt" target="_blank" class="link-pill">ccxt Repository</a>
+                            </div>
+                        </article>
+
+                        <!-- PROJECT 2: JRB & AKIRS ENTERPRISE DATACENTER & CLUSTER MIGRATION -->
+                        <article class="project-feature reveal-item" data-category="infra systems">
+                            <div class="project-feature-header">
+                                <div class="project-category-row">
+                                    <span class="project-tag">Enterprise Infrastructure / VMware ESXi + Linux DMZ Cluster + Traefik + Sophos + Coolify</span>
+                                    <span class="project-badge">Production Datacenter</span>
+                                </div>
+                                <h3 class="project-title">JRB &amp; AKIRS Enterprise Datacenter, Linux DMZ Cluster Migration &amp; Edge Routing Architecture</h3>
+                                <p class="project-desc">Engineered and administered the Akwa Ibom State (AKS) segment of the mission-critical tax revenue digital infrastructure and public-facing state portal (<a href="https://akirs.ak.gov.ng/" target="_blank" class="inline-link">akirs.ak.gov.ng</a>) deployed at Equinix Colocation Datacenter under the Joint Revenue Board (JRB) Programme, collaborating closely with the datacenter engineering team where and when necessary. Encompassed bare-metal compute clustering, four-tier VLAN network segmentation, an air-gapped 4-node Linux cluster migration, dual-IP DDoS mitigation, edge reverse proxy routing via Traefik, and automated deployment orchestration via Coolify.</p>
+                                
+                                <ul class="project-highlights">
+                                    <li><strong>Air-Gapped Virtual ISO Bootstrap:</strong> Overcame hypervisor clipboard isolation and strict static IP allocation (no DHCP, no internet in bare VM, no package managers) by authoring Netplan network definitions offline, synthesizing a bootable virtual ISO image, mounting it as a virtual CD-ROM drive in VMware vSphere, extracting the configuration, and binding static IP with verified Cloudflare ping.</li>
+                                    <li><strong>4-Node Application Cluster Migration to Hardened Linux:</strong> Migrated all 4 application servers in the cluster from legacy Windows Server to Linux without ever moving them out of the secure, isolated DMZ (VLAN 20).</li>
+                                    <li><strong>Dual-IP Multi-Homed DDoS Mitigation:</strong> Configured edge Linux instances with two distinct IP addresses: one dedicated exclusively for inbound traffic and one dedicated for outbound egress, isolating attack surfaces, mitigating connection state exhaustion, and preventing DDoS compromise.</li>
+                                    <li><strong>Sophos Firewall to Bastion &amp; Traefik Edge Routing:</strong> Routed incoming edge traffic through the Windows bastion server via Sophos XGS firewall NAT rules into an edge Linux VM acting as an internal reverse proxy running <strong>Traefik</strong>.</li>
+                                    <li><strong>Public-Facing State Portal &amp; High Availability:</strong> Maintained high-availability edge routing, TLS reverse proxy mappings, and infrastructure powering the official Akwa Ibom State revenue portal (<a href="https://akirs.ak.gov.ng/" target="_blank" class="inline-link">akirs.ak.gov.ng</a>) for statewide citizen tax services and revenue collection.</li>
+                                    <li><strong>Automated Container Deployment with Coolify &amp; RBAC:</strong> Orchestrated containerized Docker services using self-hosted Coolify via internal static IPs and encrypted SSH keypairs, exposing granular least-privilege user permission sets.</li>
+                                    <li><strong>Hypervisor &amp; Compute Cluster:</strong> Clustered dual HPE ProLiant Gen10 compute nodes running VMware ESXi 8.x managed centrally through VMware vCenter Server Appliance (vSphere Client) with dynamic compute resource pools and live VM vMotion migrations, collaborating with the datacenter engineering team where and when necessary.</li>
+                                    <li><strong>4-Tier Network Segmentation:</strong> Segmented infrastructure across four dedicated VLANs on Cisco Catalyst 1300 switches: VLAN 1 (MGMT), VLAN 10 (LAN), VLAN 20 (DMZ), and VLAN 30 (Storage - isolated, non-routed backup fabric).</li>
+                                    <li><strong>Storage, Backup &amp; DR Pipeline:</strong> Configured enterprise Synology NAS in RAID 5 with NVMe SSD cache, interconnected via isolated VLAN 30 directly to Veeam Backup Appliance (BCKUP-SRV01) with verified non-destructive full-VM instant disaster recovery restore drills.</li>
+                                    <li><strong>WAN Redundancy:</strong> Integrated high-speed Starlink Satellite Internet terminal as an active WAN failover for primary Equinix colocation fiber links, including obstruction mapping, PoE routing, and automated failover routing.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">VMware ESXi 8.x</span>
+                                    <span class="tech-pill">VMware vCenter / vSphere</span>
+                                    <span class="tech-pill">Linux DMZ Cluster Migration</span>
+                                    <span class="tech-pill">Traefik Reverse Proxy</span>
+                                    <span class="tech-pill">Coolify CI/CD</span>
+                                    <span class="tech-pill">Netplan Virtual ISO Bootstrap</span>
+                                    <span class="tech-pill">Multi-Homed Dual-IP (DDoS Defense)</span>
+                                    <span class="tech-pill">Sophos XGS 138 (NAT / IPS)</span>
+                                    <span class="tech-pill">Cisco Catalyst 1300</span>
+                                    <span class="tech-pill">Windows Server 2025 AD DS / GPO</span>
+                                    <span class="tech-pill">Synology DSM (RAID 5)</span>
+                                    <span class="tech-pill">Veeam Backup Appliance</span>
+                                    <span class="tech-pill">Public Portal (akirs.ak.gov.ng)</span>
+                                </div>
+                            </div>
+                            <div class="project-feature-links">
+                                <a href="https://akirs.ak.gov.ng/" target="_blank" class="link-pill link-pill-primary">Live Portal: akirs.ak.gov.ng &rarr;</a>
+                                <a href="https://x.com/Penivera001/status/2102325619329528238" target="_blank" class="link-pill">Read Story on X (Tweet) &rarr;</a>
+                                <a href="resume.html" class="link-pill">View Full Resume &rarr;</a>
+                            </div>
+                        </article>
+
+                        <!-- PROJECT 3: AKIRS DATA INTEGRITY PLATFORM -->
+                        <article class="project-feature reveal-item" data-category="infra systems">
+                            <div class="project-feature-header">
+                                <div class="project-category-row">
+                                    <span class="project-tag">Government Data Infrastructure / Python + FastAPI + PostgreSQL</span>
+                                    <span class="project-badge">Production System</span>
+                                </div>
                                 <h3 class="project-title">AKIRS Revenue Data Integrity Platform</h3>
-                                <p class="project-desc">A secure data preparation platform for the Akwa Ibom Internal Revenue Service. It turns inconsistent bank and taxpayer spreadsheets into standardized, analysis-ready records through heuristic column mapping, branch filtering, identity-field validation, and guided duplicate resolution.</p>
+                                <p class="project-desc">A secure data preparation and reconciliation platform for the Akwa Ibom Internal Revenue Service. It converts heterogeneous bank and taxpayer spreadsheets into standardized, analysis-ready records through heuristic column mapping, branch filtering, identity-field validation (TIN, BVN, NUBAN), and guided duplicate resolution workflows (merge, discard, review).</p>
+                                
+                                <ul class="project-highlights">
+                                    <li>Engineered automated ingestion pipelines handling multi-format Excel and CSV financial records across state revenue collection points.</li>
+                                    <li>Built configurable identity deduplication logic enabling revenue officers to resolve tax ID collisions with full audit trails.</li>
+                                    <li>Containerized with Docker Compose on hardened Linux hosts with automated health checks, PostgreSQL backups, and Redis caching.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">Python</span>
+                                    <span class="tech-pill">FastAPI</span>
+                                    <span class="tech-pill">PostgreSQL</span>
+                                    <span class="tech-pill">SQLAlchemy</span>
+                                    <span class="tech-pill">Redis</span>
+                                    <span class="tech-pill">Celery</span>
+                                    <span class="tech-pill">Docker Compose</span>
+                                    <span class="tech-pill">Linux</span>
+                                </div>
                             </div>
                             <div class="project-feature-links">
-                                <a href="https://github.com/Penivera/akirs-data-cleaner" target="_blank" class="link-pill">GitHub</a>
+                                <a href="https://github.com/Penivera/akirs-data-cleaner" target="_blank" class="link-pill link-pill-primary">GitHub Repository &rarr;</a>
                             </div>
                         </article>
 
-                        <article class="project-feature reveal-item">
+                        <!-- PROJECT 4: AKIRS REVENUE INTELLIGENCE -->
+                        <article class="project-feature reveal-item" data-category="infra systems">
                             <div class="project-feature-header">
-                                <span class="project-tag">Revenue Intelligence / Python + Playwright + RAG</span>
+                                <div class="project-category-row">
+                                    <span class="project-tag">Revenue Intelligence / Python + Playwright + Local RAG</span>
+                                    <span class="project-badge">Production System</span>
+                                </div>
                                 <h3 class="project-title">AKIRS Revenue Intelligence Platform</h3>
-                                <p class="project-desc">A business discovery and tax intelligence system covering all 31 Akwa Ibom LGAs. It finds local advertisers, enriches them through web, social, geospatial, registry, and commercial data sources, then supports tax classification and natural-language analysis through an administrative dashboard and local RAG assistant.</p>
+                                <p class="project-desc">A business discovery and tax intelligence system covering all 31 Akwa Ibom LGAs. It finds local commercial entities, scrapes and enriches them through web, social, geospatial, registry, and commercial data sources, then supports tax classification and natural-language analysis through an administrative dashboard and local RAG assistant.</p>
+                                
+                                <ul class="project-highlights">
+                                    <li>Orchestrated headless Playwright scraping workers to discover businesses across local directories, maps, and corporate registries.</li>
+                                    <li>Constructed a local Retrieval-Augmented Generation (RAG) assistant using ChromaDB vector storage for natural-language querying of revenue laws, tax codes, and taxpayer profiles.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">Python</span>
+                                    <span class="tech-pill">Playwright</span>
+                                    <span class="tech-pill">ChromaDB</span>
+                                    <span class="tech-pill">FastAPI</span>
+                                    <span class="tech-pill">Vector Embeddings</span>
+                                    <span class="tech-pill">ETL Pipelines</span>
+                                </div>
                             </div>
                             <div class="project-feature-links">
-                                <a href="https://github.com/Penivera/akirs-auto" target="_blank" class="link-pill">GitHub</a>
+                                <a href="https://github.com/Penivera/akirs-auto" target="_blank" class="link-pill link-pill-primary">GitHub Repository &rarr;</a>
                             </div>
                         </article>
 
-                        <article class="project-feature reveal-item">
+                        <!-- PROJECT 5: IRONCLAW -->
+                        <article class="project-feature reveal-item" data-category="compilers open-source systems">
                             <div class="project-feature-header">
-                                <span class="project-tag">Trading Systems / Rust + Python</span>
-                                <h3 class="project-title">CAFX</h3>
-                                <p class="project-desc">A high-frequency trading platform. I built the core order processing pipeline in Rust, stripping away heavy abstractions to keep the critical path fast. Strategy and analytics run in Python. The system handles concurrent market data ingestion across multiple exchanges.</p>
+                                <div class="project-category-row">
+                                    <span class="project-tag">Open Source / Rust + WebAssembly + Security</span>
+                                    <span class="project-badge">Merged PR #34</span>
+                                </div>
+                                <h3 class="project-title">IronClaw (NEAR AI) - WASM Capability-Based Security</h3>
+                                <p class="project-desc">Architected sandboxed GitHub and Discord WebAssembly plugin components for IronClaw, NEAR AI's agentic operating system. Implemented rigorous capability-based security boundaries, safe UTF-8 truncation, path traversal validation, and strict permission models for untrusted code execution. The contribution spanned 1,756 lines across 8 files and was merged after 53 thorough review comments.</p>
+                                
+                                <ul class="project-highlights">
+                                    <li>Implemented capability tokens ensuring untrusted agent plugins can only access explicitly declared external network endpoints and storage.</li>
+                                    <li>Designed resilient UTF-8 byte-boundary string truncation to avoid multi-byte character corruption during external API transmission.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">Rust</span>
+                                    <span class="tech-pill">WebAssembly (WASM)</span>
+                                    <span class="tech-pill">wit-bindgen</span>
+                                    <span class="tech-pill">Capability Security</span>
+                                    <span class="tech-pill">NEAR AI</span>
+                                </div>
                             </div>
                             <div class="project-feature-links">
-                                <a href="https://cafx.io" target="_blank" class="link-pill">Live Site</a>
+                                <a href="https://github.com/nearai/ironclaw/pull/34" target="_blank" class="link-pill link-pill-primary">View PR #34 &rarr;</a>
                             </div>
                         </article>
 
-                        <article class="project-feature reveal-item">
+                        <!-- PROJECT 6: CAFX -->
+                        <article class="project-feature reveal-item" data-category="systems fintech web3">
                             <div class="project-feature-header">
-                                <span class="project-tag">Payment Infrastructure / Solana</span>
-                                <h3 class="project-title">Veil</h3>
-                                <p class="project-desc">Private payment infrastructure on Solana. It includes NFC tap-to-pay (turning a phone into a POS terminal), WhatsApp conversational invoicing, confidential cross-border payroll with Umbra privacy, and fiat off-ramps to Nigerian bank accounts via Pajramp. Sign In With Solana handles authentication.</p>
+                                <div class="project-category-row">
+                                    <span class="project-tag">Trading Systems / Rust + Python</span>
+                                    <span class="project-badge">Live Production</span>
+                                </div>
+                                <h3 class="project-title">CAFX - Low-Latency Trading Engine Pipeline</h3>
+                                <p class="project-desc">A high-frequency digital asset trading platform. I built the core order processing pipeline in Rust, stripping away heavy runtime abstractions to keep the critical execution path deterministic. Strategy, statistical arbitrage, and risk analytics run in Python services. The engine handles high-throughput concurrent market data ingestion across multiple top-tier venues.</p>
+                                
+                                <ul class="project-highlights">
+                                    <li>Constructed async event loops with Tokio to multiplex order book updates and websocket trade streams without head-of-line blocking.</li>
+                                    <li>Designed lock-free in-memory buffers to maximize throughput between Rust market ingestion and downstream execution workers.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">Rust</span>
+                                    <span class="tech-pill">Python</span>
+                                    <span class="tech-pill">Tokio</span>
+                                    <span class="tech-pill">Order Routing</span>
+                                    <span class="tech-pill">WebSockets</span>
+                                    <span class="tech-pill">Low Latency</span>
+                                </div>
                             </div>
                             <div class="project-feature-links">
-                                <a href="https://github.com/Penivera/veil" target="_blank" class="link-pill">GitHub</a>
+                                <a href="https://cafx.io" target="_blank" class="link-pill link-pill-primary">Live Platform cafx.io &rarr;</a>
                             </div>
                         </article>
 
-                        <article class="project-feature reveal-item">
+                        <!-- PROJECT 7: VEIL -->
+                        <article class="project-feature reveal-item" data-category="web3 fintech">
                             <div class="project-feature-header">
-                                <span class="project-tag">Open Source / Rust + WASM</span>
-                                <h3 class="project-title">IronClaw (NEAR AI)</h3>
-                                <p class="project-desc">I added GitHub and Discord WASM components to IronClaw, NEAR AI's agentic OS. The PR added 1,756 lines across 8 files and went through 53 review comments before being merged. The challenge was implementing capability-based security so plugins could interact with external APIs without compromising the host system.</p>
+                                <div class="project-category-row">
+                                    <span class="project-tag">Payment Infrastructure / Solana + Rust + Mobile POS</span>
+                                    <span class="project-badge">Web3 Innovation</span>
+                                </div>
+                                <h3 class="project-title">Veil - Private Solana Payment Infrastructure</h3>
+                                <p class="project-desc">Confidential payment infrastructure on Solana. Features NFC contactless tap-to-pay (turning any smartphone into a physical POS terminal), WhatsApp conversational invoicing, confidential cross-border payroll with Umbra privacy primitives, and automated fiat off-ramps to Nigerian bank accounts via Pajramp.</p>
+                                
+                                <ul class="project-highlights">
+                                    <li>Integrated Sign-In-With-Solana (SIWS) for cryptographically verified merchant and buyer sessions.</li>
+                                    <li>Engineered real-time settlement rails and automated webhooks for local currency disbursement.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">Solana</span>
+                                    <span class="tech-pill">Rust</span>
+                                    <span class="tech-pill">Anchor</span>
+                                    <span class="tech-pill">NFC Point-of-Sale</span>
+                                    <span class="tech-pill">Umbra Privacy</span>
+                                    <span class="tech-pill">Fiat Off-Ramp</span>
+                                </div>
                             </div>
                             <div class="project-feature-links">
-                                <a href="https://github.com/nearai/ironclaw/pull/34" target="_blank" class="link-pill">View PR</a>
+                                <a href="https://github.com/Penivera/veil" target="_blank" class="link-pill link-pill-primary">GitHub Repository &rarr;</a>
                             </div>
                         </article>
 
-                        <article class="project-feature reveal-item">
+                        <!-- PROJECT 8: SEAORM PRO -->
+                        <article class="project-feature reveal-item" data-category="compilers open-source systems">
                             <div class="project-feature-header">
-                                <span class="project-tag">Open Source / Rust + Actix</span>
-                                <h3 class="project-title">SeaORM Pro (SeaQL)</h3>
-                                <p class="project-desc">I submitted a PR adding native Actix-web integration to the SeaORM admin panel  3,277 additions across 94 files. It includes feature-gated architecture, JWT authentication, a GraphQL playground, and support for custom entity schemas. Currently under review.</p>
-                            </div>
-                            <div class="project-feature-links">
-                                <a href="https://github.com/SeaQL/sea-orm-pro/pull/3" target="_blank" class="link-pill">View PR</a>
-                            </div>
-                        </article>
+                                <div class="project-category-row">
+                                    <span class="project-tag">Open Source / Rust + Actix Web + GraphQL</span>
+                                    <span class="project-badge">Pull Request #3</span>
+                                </div>
+                                <h3 class="project-title">SeaORM Pro (SeaQL) - Native Actix Web Integration</h3>
+                                <p class="project-desc">Submitted a comprehensive pull request adding native Actix-web integration to the SeaORM administrative suite, spanning 3,277 additions across 94 files. Features modular feature-gated compilation, JWT session authentication, an embedded interactive GraphQL playground, and custom entity schema inspection.</p>
 
-                        <article class="project-feature reveal-item">
-                            <div class="project-feature-header">
-                                <span class="project-tag">Systems / Rust</span>
-                                <h3 class="project-title">Reach</h3>
-                                <p class="project-desc">"Reach More From Your Device." My most actively developed project  136K lines of Rust, 77K of Python, and 40K of TypeScript. Currently in progress.</p>
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill">Rust</span>
+                                    <span class="tech-pill">Actix Web</span>
+                                    <span class="tech-pill">SeaORM</span>
+                                    <span class="tech-pill">GraphQL</span>
+                                    <span class="tech-pill">JWT</span>
+                                    <span class="tech-pill">Database Tooling</span>
+                                </div>
                             </div>
                             <div class="project-feature-links">
-                                <a href="https://github.com/Penivera/Reach" target="_blank" class="link-pill">GitHub</a>
+                                <a href="https://github.com/SeaQL/sea-orm-pro/pull/3" target="_blank" class="link-pill link-pill-primary">View Pull Request #3 &rarr;</a>
                             </div>
                         </article>
 
@@ -201,15 +592,25 @@
 
                     <!-- More Projects Grid -->
                     <div class="more-projects-header reveal-text">
-                        <h3>More Work</h3>
+                        <h3>More Work &amp; Systems Tooling</h3>
                     </div>
 
                     <div class="project-grid">
 
                         <article class="project-card reveal-item">
-                            <span class="project-tag">Developer Tooling / Rust</span>
+                            <span class="project-tag">Systems &amp; Telemetry / Python + Azure</span>
+                            <h4 class="project-card-title">Faschcom Systems &amp; Telemetry</h4>
+                            <p class="project-card-desc">Engineered core backend services, automated data processing pipelines, and distributed telemetry with GlitchTip and Sentry APM, deployed exclusively on Linux VPS infrastructure on Microsoft Azure.</p>
+                            <div class="card-links">
+                                <span class="link-sm" style="opacity: 0.7;">Azure Linux VPS</span>
+                                <span class="link-sm" style="opacity: 0.7;">GlitchTip &amp; Sentry</span>
+                            </div>
+                        </article>
+
+                        <article class="project-card reveal-item">
+                            <span class="project-tag">Developer Tooling / Rust + crates.io</span>
                             <h4 class="project-card-title">telegram-rs</h4>
-                            <p class="project-card-desc">Async-first Rust library for the Telegram Bot API. Published on crates.io. Includes Mini App support with initData validation, WASM bridge, and TON Connect v2 wallet integration.</p>
+                            <p class="project-card-desc">Async-first Rust library for the Telegram Bot API published on crates.io. Features Mini App support with initData cryptographic validation, WASM bridge, and TON Connect v2 wallet integration.</p>
                             <div class="card-links">
                                 <a href="https://crates.io/crates/telegram-rs-2" target="_blank" class="link-sm">crates.io</a>
                                 <a href="https://github.com/Penivera/Telegram-rs" target="_blank" class="link-sm">GitHub</a>
@@ -217,137 +618,145 @@
                         </article>
 
                         <article class="project-card reveal-item">
-                            <span class="project-tag">Distributed Systems / NEAR</span>
-                            <h4 class="project-card-title">Sheda Solutions</h4>
-                            <p class="project-card-desc">Real estate transactions on NEAR Protocol. The smart contract handles property listings, ownership transfers, and escrow logic entirely on-chain.</p>
-                        </article>
-
-                        <article class="project-card reveal-item">
-                            <span class="project-tag">Backend / FastAPI</span>
-                            <h4 class="project-card-title">Campus Gist</h4>
-                            <p class="project-card-desc">Anonymous campus community platform with wallet-based identity and outcome-based prediction markets around verifiable stories.</p>
-                            <a href="https://github.com/Penivera/Campus-Gist" target="_blank" class="link-sm">GitHub</a>
-                        </article>
-
-                        <article class="project-card reveal-item">
-                            <span class="project-tag">Telehealth / Solana</span>
-                            <h4 class="project-card-title">Psyber</h4>
-                            <p class="project-card-desc">Telehealth platform on Solana for stress, anxiety, and depression. I built the backend  authentication, task/quiz endpoints, wallet creation, and blockchain integrations.</p>
-                            <a href="https://psyber.vercel.app" target="_blank" class="link-sm">Live</a>
-                        </article>
-
-                        <article class="project-card reveal-item">
-                            <span class="project-tag">Blockchain / Rust</span>
-                            <h4 class="project-card-title">Solana Programs</h4>
-                            <p class="project-card-desc">NFT staking and DAO voting programs built with Anchor. Focused on secure state mechanics and governance logic.</p>
-                        </article>
-
-                        <article class="project-card reveal-item">
-                            <span class="project-tag">Hackathon / Python + Solana</span>
-                            <h4 class="project-card-title">Bantr</h4>
-                            <p class="project-card-desc">Telegram watch-party betting bot for the World Cup. Challenge friends with natural language bets, resolved automatically via TxLINE live match data. Built for TxODDS Hackathon (Superteam Earn).</p>
+                            <span class="project-tag">Distributed Systems / Rust</span>
+                            <h4 class="project-card-title">Bridge</h4>
+                            <p class="project-card-desc">Fault-tolerant multi-VM gossip network built in Rust. Implements decentralized peer discovery, heartbeat monitoring, and deterministic message propagation across isolated environments.</p>
                             <div class="card-links">
-                                <a href="https://usebantr.site" target="_blank" class="link-sm">Live</a>
+                                <a href="https://github.com/Penivera/Bridge" target="_blank" class="link-sm">GitHub</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card reveal-item">
+                            <span class="project-tag">Hackathon Winner / Python + Solana</span>
+                            <h4 class="project-card-title">Bantr</h4>
+                            <p class="project-card-desc">Telegram watch-party social betting bot for the World Cup. Challenge friends with natural language bets resolved automatically from live TxLINE match feeds. Built for TxODDS Hackathon.</p>
+                            <div class="card-links">
+                                <a href="https://usebantr.site" target="_blank" class="link-sm">Live Site</a>
                                 <a href="https://github.com/Penivera/Bantr" target="_blank" class="link-sm">GitHub</a>
                             </div>
                         </article>
+
+                        <article class="project-card reveal-item">
+                            <span class="project-tag">Real Estate Smart Contracts / NEAR</span>
+                            <h4 class="project-card-title">Sheda Solutions</h4>
+                            <p class="project-card-desc">On-chain real estate asset management on NEAR Protocol. The smart contract handles verified property listings, atomic ownership transfers, and multi-signature escrow logic.</p>
+                        </article>
+
+                        <article class="project-card reveal-item">
+                            <span class="project-tag">Social Markets / FastAPI</span>
+                            <h4 class="project-card-title">Campus Gist</h4>
+                            <p class="project-card-desc">Anonymous campus community platform featuring cryptographic wallet-based identity and outcome-based prediction markets around verifiable stories.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/Penivera/Campus-Gist" target="_blank" class="link-sm">GitHub</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card reveal-item">
+                            <span class="project-tag">Telehealth Platform / Solana</span>
+                            <h4 class="project-card-title">Psyber</h4>
+                            <p class="project-card-desc">Decentralized mental wellness platform on Solana. Built backend authentication, clinical assessment endpoints, non-custodial wallet provisioning, and smart contract rewards.</p>
+                            <div class="card-links">
+                                <a href="https://psyber.vercel.app" target="_blank" class="link-sm">Live App</a>
+                            </div>
+                        </article>
+
                     </div>
 
                     <!-- Experiments -->
                     <div class="experiments-section reveal-text">
-                        <h3>Experiments & Studies</h3>
-                        <p class="experiments-desc">Smaller things I've built, forked, or studied.</p>
+                        <h3>Experiments &amp; Technical Studies</h3>
+                        <p class="experiments-desc">Specialized tools, protocol implementations, and source code research.</p>
                         <div class="experiment-tags">
-                            <span class="exp-tag">ton-vanity <span class="exp-note">vanity address generator</span></span>
-                            <span class="exp-tag">TonUp <span class="exp-note">TON bot</span></span>
-                            <span class="exp-tag">Telegram-Football <span class="exp-note">Telegram game bot</span></span>
-                            <span class="exp-tag">watchdog-solana <span class="exp-note">monitoring</span></span>
-                            <span class="exp-tag">X_Automation <span class="exp-note">posting automation</span></span>
-                            <span class="exp-tag">prophecy <span class="exp-note">on-chain AI oracle</span></span>
-                            <span class="exp-tag">ccxt <span class="exp-note">crypto exchange library (studying)</span></span>
-                            <span class="exp-tag">x-algorithm <span class="exp-note">X feed algorithm (studying)</span></span>
+                            <span class="exp-tag">ccxt <span class="exp-note">transpiler &amp; core engine optimization</span></span>
+                            <span class="exp-tag">Bridge <span class="exp-note">multi-VM gossip network</span></span>
+                            <span class="exp-tag">ton-vanity <span class="exp-note">GPU/CPU vanity address miner</span></span>
+                            <span class="exp-tag">TonUp <span class="exp-note">TON automation bot</span></span>
+                            <span class="exp-tag">watchdog-solana <span class="exp-note">validator &amp; slot telemetry</span></span>
+                            <span class="exp-tag">prophecy <span class="exp-note">on-chain AI oracle contract</span></span>
+                            <span class="exp-tag">x-algorithm <span class="exp-note">ranking algorithm research</span></span>
+                            <span class="exp-tag">X_Automation <span class="exp-note">browser automated publishing</span></span>
                         </div>
                     </div>
                 </div>
             </section>
 
-
             <!-- ═══════════════════════════════════════════ -->
-            <!-- PART 3: COMMUNITY & WRITING                 -->
+            <!-- PART 4: COMMUNITY & WRITING                 -->
             <!-- ═══════════════════════════════════════════ -->
 
             <section class="community-section" id="community">
                 <div class="container">
                     <div class="section-header reveal-text">
-                        <h2 class="section-title">Community & Writing</h2>
+                        <span class="section-eyebrow">04. Leadership &amp; Community</span>
+                        <h2 class="section-title">Community &amp; Writing</h2>
+                        <p class="section-desc">Building the engineering community, speaking on systems and decentralization, and publishing technical research.</p>
                     </div>
 
                     <div class="community-grid">
                         <div class="community-block reveal-item">
-                            <h4>Roles</h4>
+                            <h4>Leadership &amp; Industry Roles</h4>
                             <ul class="community-list">
-                                <li><strong>Campus Lead:</strong> <a href="https://x.com/SuperteamNG" target="_blank">SuperteamNG</a>, University of Uyo</li>
-                                <li><strong>Blockchain Lead:</strong> <a href="https://gdg.community.dev" target="_blank">GDG on Campus, University of Uyo</a></li>
-                                <li><strong>Co-founder:</strong> <a href="https://x.com/CRYPTOBLISS_01" target="_blank">CRYPTOBLISS_01</a></li>
-                                <li><strong>Dev Lead:</strong> <a href="https://cafx.io" target="_blank">CAFX</a></li>
+                                <li><strong>Systems, Backend &amp; Automation:</strong> Faschcom (Azure Linux VPS, GlitchTip &amp; Sentry telemetry, automation pipelines)</li>
+                                <li><strong>Campus Lead:</strong> <a href="https://x.com/SuperteamNG" target="_blank" class="inline-link">SuperteamNG</a>, University of Uyo</li>
+                                <li><strong>Blockchain Lead:</strong> <a href="https://gdg.community.dev" target="_blank" class="inline-link">GDG on Campus, University of Uyo</a></li>
+                                <li><strong>Dev Lead:</strong> <a href="https://cafx.io" target="_blank" class="inline-link">CAFX Trading</a></li>
+                                <li><strong>Co-founder:</strong> <a href="https://x.com/CRYPTOBLISS_01" target="_blank" class="inline-link">CRYPTOBLISS_01</a></li>
                             </ul>
                         </div>
 
                         <div class="community-block reveal-item">
-                            <h4>Events & Speaking</h4>
+                            <h4>Events &amp; Keynotes</h4>
                             <ul class="community-list">
-                                <li><strong>Solana Students Africa Campus Tour</strong>  Brought it to UNIUYO through the SuperteamNG chapter. Nov 2025.</li>
-                                <li><strong>Notion Reset and Restart</strong>  Spoke on restrategizing without changing the ultimate goal, representing SuperteamNG. <a href="https://x.com/SuperteamNG/status/2000885487934791982" target="_blank" class="inline-link">View post</a></li>
-                                <li><strong>ACES 2025 Annual Event</strong>  Facilitated a session breaking down Web3, DeFi, and Solana as practical skills for students. <a href="https://x.com/uniuyoaces/status/2014450059744620579" target="_blank" class="inline-link">View post</a></li>
-                                <li><strong>Web3 Like You Are 5</strong>  GDG event: "Breaking Down the concept of web3" March 2026.</li>
-                                <li><strong>Starting Out In Tech</strong> Faschcom Event: "Creating a Global Standard as a Young Tech Talent." 2025.</li>
+                                <li><strong>Solana Students Africa Campus Tour:</strong> Brought the continent-wide tour to UNIUYO through the SuperteamNG chapter (Nov 2025).</li>
+                                <li><strong>ACES 2025 Annual Conference:</strong> Facilitated deep-dive workshop breaking down Web3 architecture and Solana runtime for computer science students.</li>
+                                <li><strong>Notion Reset &amp; Restart:</strong> Keynote speaker on restrategizing long-term engineering roadmaps representing SuperteamNG.</li>
+                                <li><strong>Web3 Like You Are 5:</strong> GDG event explaining cryptography, state machines, and consensus models (March 2026).</li>
+                                <li><strong>Starting Out In Tech:</strong> Speaker on creating global technical standards as emerging software talent.</li>
                             </ul>
                         </div>
 
                         <div class="community-block reveal-item">
-                            <h4>Awards & Debates</h4>
+                            <h4>Debate &amp; Ecosystem Honors</h4>
                             <ul class="community-list">
-                                <li><strong>Socrates Interfaculty Debate (Champion)</strong>  Represented the Faculty of Computing at UNIUYO. Led the team to victory and emerged as the overall Best Speaker (currently undefeated). <a href="https://x.com/Penivera001/status/1813126258802180282" target="_blank" class="inline-link">View post</a></li>
-                                <li><strong>NEAR Protocol Bounty Winner (3x)</strong>  Successfully completed and won three distinct bounties within the NEAR ecosystem, including the Qbit bounty. 
-                                    <a href="https://x.com/Penivera001/status/1969731940648722855" target="_blank" class="inline-link">[1]</a>
-                                    <a href="https://x.com/Penivera001/status/2012818658074996897" target="_blank" class="inline-link">[2]</a>
-                                    <a href="https://x.com/Penivera001/status/2045214222095622569" target="_blank" class="inline-link">[3]</a>
-                                </li>
+                                <li><strong>Socrates Interfaculty Debate Champion:</strong> Represented Faculty of Computing; led the team to victory and named overall Best Speaker (undefeated).</li>
+                                <li><strong>NEAR Protocol Bounty Winner (3x):</strong> Awarded three distinct technical bounties within the NEAR ecosystem, including the Qbit protocol bounty.</li>
+                                <li><strong>Tata Imagination Challenge 2026:</strong> Campus Ambassador for Tata Group initiative.</li>
                             </ul>
                         </div>
 
                         <div class="community-block reveal-item">
-                            <h4>Writing</h4>
+                            <h4>Technical Writing &amp; Architecture</h4>
                             <ul class="community-list">
-                                <li><strong>"The Code vs The Crowd: NEAR vs TON"</strong>  Comparative analysis of developer experience across protocols. Published on Coinsbench.</li>
-                                <li>Technical articles on blockchain development on <a href="https://medium.com/@penielben40" target="_blank" class="inline-link">Medium</a>.</li>
+                                <li><strong>Air-Gapped Virtual ISO Network Bootstrapping &amp; DMZ Migration:</strong> Live engineering breakdown of bypassing hypervisor clipboard barriers and migrating an isolated DMZ cluster to Linux. <a href="https://x.com/Penivera001/status/2102325619329528238" target="_blank" class="inline-link">Read breakdown on X</a></li>
+                                <li><strong>"The Code vs The Crowd: NEAR vs TON":</strong> Comparative analysis of developer experience, sharding models, and actor concurrency on Coinsbench.</li>
+                                <li><strong>Technical Articles on Medium:</strong> Deep dives into blockchain runtimes, WASM security sandboxing, and Rust concurrency on <a href="https://medium.com/@penielben40" target="_blank" class="inline-link">Medium (@penielben40)</a>.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-
             <!-- ═══════════════════════════════════════════ -->
-            <!-- PART 4: CURRENTLY                           -->
+            <!-- PART 5: CURRENTLY                           -->
             <!-- ═══════════════════════════════════════════ -->
 
             <section class="currently-section reveal-text">
                 <div class="container">
                     <h3 class="currently-title">Right Now</h3>
-                    <p class="currently-text">Actively building <strong>Reach</strong> (Rust). Maintaining the <strong>CAFX</strong> trading pipeline and <strong>Sheda</strong> backend. Contributing to open source. Writing about what I learn.</p>
+                    <p class="currently-text">Actively building <strong>Reach</strong> (high-performance Rust runtime). Optimizing compiler performance and build concurrency on <strong>CCXT</strong>. Maintaining the <strong>CAFX</strong> trading pipeline and operating hybrid cloud &amp; datacenter systems. Writing about what I discover.</p>
                 </div>
             </section>
 
-
             <!-- ═══════════════════════════════════════════ -->
-            <!-- PART 5: CONVERSATION                        -->
+            <!-- PART 6: CONVERSATION                        -->
             <!-- ═══════════════════════════════════════════ -->
 
             <section class="conversation-section" id="conversation">
                 <div class="container">
                     <div class="conversation-content reveal-text">
-                        <p class="thought-medium">Reach Out, Let's Make Magic Together</p>
+                        <span class="section-eyebrow">05. Connect</span>
+                        <p class="thought-large" style="margin-top: 0.5rem; margin-bottom: 1rem;">Reach Out, Let's Build Together</p>
+                        <p class="thought-medium" style="margin-bottom: 2rem;">Available for high-impact backend engineering, systems development, virtualization &amp; cloud infrastructure, and technical consulting.</p>
                         <div class="contact-grid">
                             <a href="mailto:hello@peni.dev" class="contact-link">
                                 <span class="contact-label">Email</span>
@@ -358,12 +767,12 @@
                                 <span class="contact-value">@Penivera</span>
                             </a>
                             <a href="https://x.com/Penivera001" target="_blank" class="contact-link">
-                                <span class="contact-label">X</span>
+                                <span class="contact-label">X (Twitter)</span>
                                 <span class="contact-value">@Penivera001</span>
                             </a>
                             <a href="https://linkedin.com/in/peniel-ben-065792266" target="_blank" class="contact-link">
                                 <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">peniel-ben-065792266</span>
+                                <span class="contact-value">peniel-ben</span>
                             </a>
                             <a href="https://t.me/Penivera" target="_blank" class="contact-link">
                                 <span class="contact-label">Telegram</span>
@@ -376,8 +785,11 @@
 
             <footer class="site-footer">
                 <div class="container footer-inner">
-                    <span class="footer-text">&copy; 2026 Peniel Ben</span>
-                    <span class="footer-text">Built with vanilla HTML, CSS, and JS</span>
+                    <span class="footer-text">&copy; 2026 Peniel Ben - Systems &amp; Infrastructure Engineer</span>
+                    <div style="display: flex; gap: 16px; align-items: center;">
+                        <a href="resume.html" class="inline-link" style="font-size: 0.72rem; color: var(--color-text-2);">Resume</a>
+                        <span class="footer-text">peni.dev</span>
+                    </div>
                 </div>
             </footer>
 
