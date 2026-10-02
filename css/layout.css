@@ -27,12 +27,12 @@
 
 /* Narrative Moments */
 .moment {
-  min-height: 75vh; display: flex; align-items: center;
+  min-height: 55vh; display: flex; align-items: center;
   position: relative; border-bottom: 1px solid var(--color-border);
-  padding: var(--space-xl) 0;
+  padding: 5rem 0;
   transition: border-color var(--t-fast);
 }
-.intro-moment { min-height: 85vh; padding-top: 100px; }
+.intro-moment { min-height: 85vh; padding-top: 105px; padding-bottom: 90px; }
 
 .moment-content { width: 100%; max-width: 800px; }
 .align-right { margin-left: auto; text-align: right; }
@@ -48,7 +48,15 @@
 .bottom-right { bottom: var(--space-md); right: var(--space-md); }
 
 @media (max-width: 768px) {
-  .moment { min-height: auto; padding: var(--space-lg) 0; }
-  .intro-moment { min-height: auto; padding-top: 85px; }
+  .container { padding: 0 1.25rem; }
+  .moment { min-height: auto; padding: 3.5rem 0; }
+  .intro-moment { min-height: auto; padding-top: 80px; }
   .align-right { margin-left: 0; text-align: left; }
+  .crosshair { display: none; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+  .moment { padding: 2.75rem 0; }
+  .intro-moment { padding-top: 75px; }
 }
