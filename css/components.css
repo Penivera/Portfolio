@@ -217,9 +217,14 @@
   padding-top: var(--space-xs); border-top: 1px solid var(--color-border);
 }
 .skill-pill {
+  display: inline-flex; align-items: center; gap: 5px;
   font-size: 0.75rem; font-family: var(--font-heading);
   background: var(--color-badge-bg); color: var(--color-text-2);
   padding: 0.2rem 0.55rem; border-radius: 4px; border: 1px solid var(--color-border);
+}
+.skill-pill svg, .tech-pill svg {
+  width: 12px; height: 12px; flex-shrink: 0;
+  fill: currentColor; opacity: 0.75;
 }
 
 
@@ -325,6 +330,7 @@
   margin-bottom: var(--space-md);
 }
 .tech-pill {
+  display: inline-flex; align-items: center; gap: 5px;
   font-family: var(--font-heading); font-size: 0.72rem;
   color: var(--color-text-3); background: var(--color-badge-bg);
   padding: 2px 7px; border-radius: 4px; border: 1px solid var(--color-border);
@@ -518,3 +524,96 @@
 .project-grid:hover .project-card { opacity: 0.5; }
 .project-grid .project-card:hover { opacity: 1; }
 .project-feature, .project-card { transition: opacity var(--t-med), background var(--t-fast); }
+
+/* ═══════════════════════════════════════════ */
+/* ORGANIZATIONS & ECOSYSTEMS STRIP            */
+/* ═══════════════════════════════════════════ */
+.org-strip-section {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+.org-strip-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.org-strip-label {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-3);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.org-strip-logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 3vw, 2.5rem);
+  flex-wrap: wrap;
+}
+.org-logo-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-2);
+  opacity: 0.45;
+  transition: opacity var(--t-fast), color var(--t-fast);
+  cursor: default;
+}
+.org-logo-item:hover {
+  opacity: 1;
+  color: var(--color-text);
+}
+.org-logo-item svg {
+  height: 18px;
+  width: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+.org-logo-text {
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+[data-theme="light"] .org-logo-item {
+  opacity: 0.55;
+}
+[data-theme="light"] .org-logo-item:hover {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════ */
+/* CASE STUDY BRAND BADGES                     */
+/* ═══════════════════════════════════════════ */
+.project-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--space-sm);
+}
+.project-title-row .project-title {
+  margin-bottom: 0;
+}
+.project-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.project-brand-badge svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
