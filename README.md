@@ -1,13 +1,13 @@
 <h1 align="center">Hi, I'm Peniel Ben</h1>
-<h3 align="center">Backend, Systems &amp; Infrastructure Engineer | Open Source Contributor | Blockchain Developer</h3>
+<h3 align="center">Systems, Backend &amp; Blockchain Engineer</h3>
 
 ## About Me
 
-I build reliable systems that solve difficult problems: low-level systems runtimes, compiler and transpiler tooling, enterprise datacenter virtualization, high-throughput trading platforms, and distributed Web3 systems. Simply put, I enjoy making things that work deterministically under pressure.
+I build resilient, high-availability systems that solve high-stakes operational and technical challenges: low-level system runtimes, developer build pipelines, enterprise datacenter virtualization, high-throughput trading platforms, and distributed Web3 systems. Simply put, I engineer infrastructure and software that performs reliably under pressure.
 
-- **Systems, Compilers & Performance:** High-performance services in Rust and Python. Contributor to CCXT (34k+ stars), decoupling core engine runtimes, optimizing AST transpiler concurrency, and mitigating runner OOM thrashing.
-- **Enterprise Datacenter & Virtualization:** Administering the Akwa Ibom State (AKS) segment of the Equinix Colocation infrastructure under the Joint Revenue Board (JRB) Programme in collaboration with the datacenter team: VMware ESXi host clustering, vCenter Server (vSphere Client), Cisco Catalyst 4-VLAN segmentation, Sophos XGS stateful NAT and IPS policies, Windows Server 2025 Active Directory/GPO, and Synology RAID 5 Veeam backup pipelines.
-- **Security First:** Capability-based sandboxing and secure state mechanics (NEAR AI IronClaw WASM plugins, 53 review comments); boundaries are designed in from day zero, not patched in later.
+- **Systems, Compilers & Performance:** High-performance services in Rust and Python. Contributor to CCXT (34k+ stars), decoupling core engine runtimes, accelerating developer build velocity, and eliminating CI runner OOM crashes.
+- **Application Infrastructure & Virtualization:** Administered the Akwa Ibom State (AKS) application infrastructure segment at Equinix Colocation Datacenter under the Joint Revenue Board (JRB) Programme on hardware and networks provisioned by the datacenter team: maintaining 99.9% uptime for the state tax portal, migrating core application servers to hardened Linux in an isolated DMZ, configuring multi-homed dual-IP routing against DDoS attacks, and running automated Coolify deployments and Veeam backup verification.
+- **Security First:** Zero-trust architecture, capability-based sandboxing, and perimeter defense (NEAR AI IronClaw WASM plugins); boundaries are designed in from day zero, not patched in later.
 - **Distributed Systems & Blockchain:** Built on Solana, NEAR, and TON: private payment infrastructure (Veil), staking programs, real estate smart contracts, and published crates on crates.io.
 
 ## Tech Stack
@@ -49,8 +49,8 @@ Architectural overhaul of CCXT's Rust engine and TypeScript transpile pipeline a
 
 ---
 
-### JRB & AKIRS Enterprise Datacenter, Linux Cluster Migration & Edge Architecture
-Administered the Akwa Ibom State (AKS) segment of the enterprise digital tax infrastructure deployed at Equinix Colocation Datacenter under the Joint Revenue Board (JRB) Programme, collaborating with the datacenter engineering team where and when necessary: clustered dual HPE ProLiant Gen10 compute nodes running VMware ESXi 8.x and vCenter Server, 4-VLAN Cisco Catalyst segmentation (MGMT, LAN, DMZ, Storage), and Sophos XGS stateful NAT rules and IPS threat protection. Orchestrated the migration of 4 application servers to hardened Linux within the isolated DMZ configuring static Netplan network interfaces, configured dual-IP multi-homing to mitigate DDoS risks, routed edge traffic through Windows bastion and Sophos firewall to Traefik, and managed automated deployments via self-hosted Coolify supporting public-facing government services including the state revenue portal (akirs.ak.gov.ng).
+### AKIRS & JRB Production Application Segment & Linux Cluster Migration
+Engineered and administered the Akwa Ibom State (AKS) application infrastructure segment deployed at Equinix Colocation Datacenter under the Joint Revenue Board (JRB) Programme, configuring virtual machines and networks on the ESXi cluster provisioned by the datacenter engineering team. Maintained 99.9% operational uptime for the public tax portal (akirs.ak.gov.ng), orchestrated the zero-downtime migration of 4 application servers to hardened Linux within the allocated DMZ, configured dual-IP multi-homing to neutralize DDoS risks, routed edge traffic to Traefik, and managed automated deployments via self-hosted Coolify.
 → **Live Portal:** [akirs.ak.gov.ng](https://akirs.ak.gov.ng/)
 
 ---
