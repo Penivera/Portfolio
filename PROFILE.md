@@ -5,7 +5,7 @@
 
 I build resilient, high-availability systems that solve high-stakes operational and technical challenges: low-level system runtimes, developer build pipelines, enterprise datacenter virtualization, high-throughput trading platforms, and distributed Web3 systems. Simply put, I engineer infrastructure and software that performs reliably under pressure.
 
-- **Systems, Compilers & Performance:** High-performance services in Rust and Python. Contributor to CCXT (34k+ stars), decoupling core engine runtimes, accelerating developer build velocity, and eliminating CI runner OOM crashes.
+- **Systems Development, Compilers & Performance:** High-performance systems and services in Rust and Python. Core contributor to CCXT (34k+ stars, merged PR #30723), decoupling core engine runtimes, accelerating developer build velocity, and eliminating CI runner OOM crashes. Building fault-tolerant distributed systems like Bridge (multi-VM gossip network).
 - **Application Infrastructure & Virtualization:** Administered the Akwa Ibom State (AKS) application infrastructure segment at Equinix Colocation Datacenter under the Joint Revenue Board (JRB) Programme on hardware and networks provisioned by the datacenter team: maintaining 99.9% uptime for the state tax portal, migrating core application servers to hardened Linux in an isolated DMZ, configuring multi-homed dual-IP routing against DDoS attacks, and running automated Coolify deployments and Veeam backup verification.
 - **Security First:** Zero-trust architecture, capability-based sandboxing, and perimeter defense (NEAR AI IronClaw WASM plugins); boundaries are designed in from day zero, not patched in later.
 - **Distributed Systems & Blockchain:** Built on Solana, NEAR, and TON: private payment infrastructure (Veil), staking programs, real estate smart contracts, and published crates on crates.io.
@@ -43,9 +43,9 @@ I build resilient, high-availability systems that solve high-stakes operational 
 
 ## Featured Work & Open Source
 
-### CCXT - Rust Engine Decoupling & Transpiler Concurrency Architecture
+### CCXT - Rust Engine Decoupling & Transpiler Concurrency Architecture *(Merged)*
 Architectural overhaul of CCXT's Rust engine and TypeScript transpile pipeline across ~200 crypto exchanges (34k+ stars). Decoupled the hand-written engine runtime into `rust/ccxt-core` with zero breaking changes, capped transpile worker fan-out to prevent runner OOM terminations, and added automated `mold`/`lld` high-performance linker detection.
-→ **GitHub PR:** [#30723](https://github.com/ccxt/ccxt/pull/30723)
+→ **GitHub PR (Merged):** [#30723](https://github.com/ccxt/ccxt/pull/30723)
 
 ---
 
@@ -58,6 +58,12 @@ Engineered and administered the Akwa Ibom State (AKS) application infrastructure
 ### CAFX
 High-frequency trading platform. Core order-processing pipeline in Rust, strategy and analytics in Python, concurrent multi-exchange market data ingestion.
 → **Live:** [cafx.io](https://cafx.io)
+
+---
+
+### Bridge - Fault-Tolerant Multi-VM Gossip Network
+Fault-tolerant distributed gossip network built in Rust for reliable communication across isolated virtual machine environments. Implements decentralized peer discovery, heartbeat-based liveness monitoring, and deterministic message propagation without centralized orchestration.
+→ **GitHub:** [Penivera/Bridge](https://github.com/Penivera/Bridge)
 
 ---
 

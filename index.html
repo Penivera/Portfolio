@@ -413,8 +413,8 @@
 
                     <!-- Category Filter Bar -->
                     <div class="filter-bar reveal-text">
-                        <button class="filter-btn active" data-filter="all">All Work <span class="filter-count">(08)</span></button>
-                        <button class="filter-btn" data-filter="compilers">Compilers &amp; Open Source <span class="filter-count">(03)</span></button>
+                        <button class="filter-btn active" data-filter="all">All Work <span class="filter-count">(09)</span></button>
+                        <button class="filter-btn" data-filter="compilers">Compilers &amp; Open Source <span class="filter-count">(04)</span></button>
                         <button class="filter-btn" data-filter="infra">Infra &amp; Systems <span class="filter-count">(03)</span></button>
                         <button class="filter-btn" data-filter="web3">Web3 &amp; Fintech <span class="filter-count">(04)</span></button>
                     </div>
@@ -427,7 +427,7 @@
                             <div class="project-feature-header">
                                 <div class="project-category-row">
                                     <span class="project-tag">Open Source / Rust + TypeScript + Compilers</span>
-                                    <span class="project-badge">Pull Request #30723</span>
+                                    <span class="project-badge">Merged PR #30723</span>
                                 </div>
                                 <div class="project-title-row">
                                     <span class="project-brand-badge" title="CCXT" aria-hidden="true">
@@ -677,7 +677,42 @@
                             </div>
                         </article>
 
-                        <!-- PROJECT 8: SEAORM PRO -->
+                        <!-- PROJECT 8: BRIDGE -->
+                        <article class="project-feature reveal-item" data-category="systems compilers">
+                            <div class="project-feature-header">
+                                <div class="project-category-row">
+                                    <span class="project-tag">Systems Development / Rust + Tokio + Networking</span>
+                                    <span class="project-badge">Distributed Systems</span>
+                                </div>
+                                <div class="project-title-row">
+                                    <span class="project-brand-badge" title="Bridge" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                                    </span>
+                                    <h3 class="project-title">Bridge - Fault-Tolerant Multi-VM Gossip Network</h3>
+                                </div>
+                                <p class="project-desc">A fault-tolerant distributed gossip network built in Rust for reliable communication across isolated virtual machine environments. Implements decentralized peer discovery, heartbeat-based liveness monitoring, and deterministic message propagation to maintain cluster coordination without centralized orchestration.</p>
+                                
+                                <ul class="project-highlights">
+                                    <li><strong>Decentralized Peer Discovery:</strong> Nodes autonomously discover and register peers without a central registry, enabling dynamic cluster membership and resilient topology adaptation.</li>
+                                    <li><strong>Heartbeat Liveness Monitoring:</strong> Configurable heartbeat intervals with failure detection thresholds to identify unresponsive nodes and trigger automatic membership updates across the gossip mesh.</li>
+                                    <li><strong>Deterministic Message Propagation:</strong> Guaranteed message delivery semantics across all reachable nodes using epidemic-style dissemination with deduplication and consistency guarantees.</li>
+                                </ul>
+
+                                <div class="project-tech-pills">
+                                    <span class="tech-pill"><svg viewBox="0 0 24 24"><path d="M21.84 10.97l-1.07-.36.31-1.09a.75.75 0 0 0-.53-.92l-1.63-.44.02-.32a.75.75 0 0 0-.69-.79l-1.68-.15-.27-.85a.75.75 0 0 0-.81-.5l-1.66.19-.54-.7a.75.75 0 0 0-.89-.2l-1.53.52-.77-.44a.75.75 0 0 0-.91.13L8.6 6.8l-.94-.13a.75.75 0 0 0-.87.42l-.74 1.44-1.02.16a.75.75 0 0 0-.75.67l-.27 1.66-1.08.43a.75.75 0 0 0-.44.88l.24 1.67-1.02.72a.75.75 0 0 0-.17.97l.74 1.53-.87.97a.75.75 0 0 0 .11.98l1.19 1.23-.62 1.15a.75.75 0 0 0 .37.98l1.52.82-.32 1.28a.75.75 0 0 0 .63.92l1.69.36.02.32a.75.75 0 0 0 .69.79l1.68.15.27.85a.75.75 0 0 0 .81.5l1.66-.19.54.7a.75.75 0 0 0 .89.2l1.53-.52.77.44a.75.75 0 0 0 .91-.13l1.07-1.12.94.13a.75.75 0 0 0 .87-.42l.74-1.44 1.02-.16a.75.75 0 0 0 .75-.67l.27-1.66 1.08-.43a.75.75 0 0 0 .44-.88l-.24-1.67 1.02-.72a.75.75 0 0 0 .17-.97l-.74-1.53.87-.97a.75.75 0 0 0-.11-.98l-1.19-1.23.62-1.15a.75.75 0 0 0-.37-.98l-1.52-.82.32-1.28a.75.75 0 0 0-.63-.92zm-9.84 5.03v-4h2.5c1.1 0 2 .9 2 2s-.9 2-2 2h-2.5zm4 4h-2.5l-1.5-2h-1.5v2h-1.5V6h4c1.93 0 3.5 1.57 3.5 3.5 0 1.24-.65 2.33-1.63 2.95l1.63 3.55z"/></svg>Rust</span>
+                                    <span class="tech-pill">Tokio</span>
+                                    <span class="tech-pill">Gossip Protocol</span>
+                                    <span class="tech-pill">Peer Discovery</span>
+                                    <span class="tech-pill">Heartbeat Monitoring</span>
+                                    <span class="tech-pill">Distributed Systems</span>
+                                </div>
+                            </div>
+                            <div class="project-feature-links">
+                                <a href="https://github.com/Penivera/Bridge" target="_blank" class="link-pill link-pill-primary">GitHub Repository &rarr;</a>
+                            </div>
+                        </article>
+
+                        <!-- PROJECT 9: SEAORM PRO -->
                         <article class="project-feature reveal-item" data-category="compilers open-source systems">
                             <div class="project-feature-header">
                                 <div class="project-category-row">
@@ -740,14 +775,6 @@
                             </div>
                         </article>
 
-                        <article class="project-card reveal-item">
-                            <span class="project-tag">Distributed Systems / Rust</span>
-                            <h4 class="project-card-title">Bridge</h4>
-                            <p class="project-card-desc">Fault-tolerant multi-VM gossip network built in Rust. Implements decentralized peer discovery, heartbeat monitoring, and deterministic message propagation across isolated environments.</p>
-                            <div class="card-links">
-                                <a href="https://github.com/Penivera/Bridge" target="_blank" class="link-sm">GitHub</a>
-                            </div>
-                        </article>
 
                         <article class="project-card reveal-item">
                             <span class="project-tag">Social Prediction / Python + Solana</span>
@@ -866,7 +893,7 @@
             <section class="currently-section reveal-text">
                 <div class="container">
                     <h3 class="currently-title">Right Now</h3>
-                    <p class="currently-text">Actively building <strong>Reach</strong> (high-performance Rust runtime). Optimizing compiler performance and build concurrency on <strong>CCXT</strong>. Maintaining the <strong>CAFX</strong> trading pipeline and operating hybrid cloud &amp; datacenter systems. Writing about what I discover.</p>
+                    <p class="currently-text">Actively building <strong>Reach</strong> (high-performance Rust runtime) and <strong>Bridge</strong> (fault-tolerant multi-VM gossip network). Core contributor to <strong>CCXT</strong> (merged engine decoupling PR). Maintaining the <strong>CAFX</strong> trading pipeline and operating hybrid cloud &amp; datacenter systems. Writing about what I discover.</p>
                 </div>
             </section>
 
